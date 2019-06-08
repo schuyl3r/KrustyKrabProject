@@ -4,13 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>krusty</title>
+    <title>Upload to Krusty</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/uploadstyle.css">
+
+    <script defer src="assets/js/upload.js"></script>
 </head>
 
 <body>
@@ -30,10 +32,11 @@
         </nav>
     </div>
 
-    <div>
-            <br>
-            <span class="uploadFile" style="padding: 12%"> <a class="btn btn-light action-button" role="button" href="upload.html" style="font-family: 'Oleo Script', cursive;font-size: 23px;background-color: rgb(203, 80, 75);color: rgb(238,238,238);">Upload</a></span>
-    </div>
+    <center class="uploadArea">
+
+        <input type="file" id="fileInput" class="fileArea" style="font-family: 'Oleo Script', cursive;font-size: 23px;background-color: rgb(203, 80, 75);color: rgb(238,238,238);">
+
+    </center>
 
     <div class="footer-basic">
         <footer>
