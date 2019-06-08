@@ -4,13 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>krusty</title>
+    <title>Login to Krusty</title>
+    <link rel="stylesheet" href="assets/css/loginstyle.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script defer src="assets/js/login.js"></script>
 </head>
 
 <body>
@@ -20,14 +22,19 @@
                 <button
                     data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="font-family: 'Oleo Script', cursive;font-size: 29px;color: rgb(238,238,238);">Home</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="font-family: 'Oleo Script', cursive;font-size: 29px;color: rgb(238,238,238);">Sales</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="font-family: 'Oleo Script', cursive;font-size: 29px;color: rgb(238,238,238);">Dashboard</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="font-family: 'Oleo Script', cursive;font-size: 29px;color: rgb(238,238,238);">Upload</a></li>
-                        </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="login.html" style="font-family: 'Oleo Script', cursive;font-size: 23px;">Sign in</a></span></div>
+
+                        </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" id="backbutton" role="button" href="index.html" style="font-family: 'Oleo Script', cursive;font-size: 23px; ">Back</a></span></div>
             </div>
         </nav>
+    </div>
+    <div class="loginArea">
+        <label for="usernameInput" style="font-family: 'Oleo Script', cursive">Username</label>
+        <input type="text" id="usernameInput" class="inputArea">
+        <br>
+        <label for="passwordInput" style="font-family: 'Oleo Script', cursive">Password</label>
+        <input type="password" id="passwordInput" class="inputArea">
+        <br>
+        <button id="loginUser">Login</button>
     </div>
     <div class="footer-basic">
         <footer>
