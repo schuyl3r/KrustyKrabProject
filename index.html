@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>The Krusty Krab</title>
@@ -10,14 +11,13 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
-
   <script>
     $(document).ready(function () {
       $('#navguest').load("nav/nav-guest.html");
       $('#footer').load("footer/footer.html");
+      $('#favicon').load("favicon.html");
     });
   </script>
-
 
   <script>var ml = { timelines: {} };</script>
 
@@ -28,10 +28,7 @@
   <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <div id = "favicon"> </div>
 
 </head>
 
