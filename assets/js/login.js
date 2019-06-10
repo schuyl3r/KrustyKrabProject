@@ -6,7 +6,7 @@ function login(){
     if(username.value == 'admin' && password.value == 'password'){
         alert('Success!');
     } else{
-        alert('Please check your username or password...')
+        alert('Please check your username or password...');
     }
 }
 
