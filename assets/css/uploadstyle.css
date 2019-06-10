@@ -1,3 +1,23 @@
 .uploadArea{
     margin-top: 150px;
 }
+
+label{
+    font-size: 150%
+}
+
+.uploadBtn{
+    font-size: 150%;
+    background-color: rgb(188,30,23);
+    color: white;
+    width: 100px;
+    margin-top: 5pxpx;
+    border-radius: 5px;
+}
+
+.uploadBtn:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+

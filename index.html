@@ -36,59 +36,51 @@
 </head>
 
 <body>
+    
+    <div id = "navguest"> </div>
+    
+    <div class="moving-letters">
+        
+        
+        <h1 class="ml7">
+            <span class="text-wrapper">
+                <span class="letters">The Krabby Patty</span>
+            </span>
+        </h1>
+        
+        <img src = "assets/img/burger.png" height=300px style = "padding: 0 30 30 30; ">
+        
+    
+        <script>
+            $('.ml7 .letters').each(function(){
+                $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+            });
+            
+            ml.timelines["ml7"] = anime.timeline({loop: true})
+              .add({
+                targets: '.ml7 .letter',
+                translateY: ["1.1em", 0],
+                translateX: ["0.55em", 0],
+                translateZ: 0,
+                rotateZ: [180, 0],
+                duration: 750,
+                easing: "easeOutExpo",
+                delay: function(el, i) {
+                  return 50 * i;
+                }
+              }).add({
+                targets: '.ml7',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+              });
+        </script>
+    
+    </div>
 
-  <div id="navguest"> </div>
-
-  <div class="moving-letters">
-
-
-    <h1 class="ml7">
-      <span class="text-wrapper">
-        <span class="letters">The Krabby Patty</span>
-      </span>
-    </h1>
-
-    <img src="assets/img/burger.png" height=300px style="padding: 0 30 30 30; ">
-
-
-    <script>
-      $('.ml7 .letters').each(function () {
-        $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
-      });
-
-      ml.timelines["ml7"] = anime.timeline({ loop: true })
-        .add({
-          targets: '.ml7 .letter',
-          translateY: ["1.1em", 0],
-          translateX: ["0.55em", 0],
-          translateZ: 0,
-          rotateZ: [180, 0],
-          duration: 750,
-          easing: "easeOutExpo",
-          delay: function (el, i) {
-            return 50 * i;
-          }
-        }).add({
-          targets: '.ml7',
-          opacity: 0,
-          duration: 1000,
-          easing: "easeOutExpo",
-          delay: 1000
-        });
-    </script>
-
-  </div>
-
-  <div>
-    <br>
-    <span class="uploadFile" style="padding: 12%"> <a class="btn btn-light action-button" role="button"
-        href="upload.html"
-        style="font-family: 'Oleo Script', cursive;font-size: 23px;background-color: rgb(203, 80, 75);color: rgb(238,238,238);">Upload</a></span>
-  </div>
-
-
-  <div id="footer"> </div>
-
+    <div id = "footer"> </div>
+    
 </body>
 
 </html>

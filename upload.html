@@ -25,8 +25,9 @@
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css//uploadstyle.css"> 
 
-    <script defer src="assets/js/login.js"></script>
+    <script defer src="assets/js/upload.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,12 @@
 
     <center class="uploadArea">
 
-        <input type="file" id="fileInput" class="fileArea" style="font-family: 'Oleo Script', cursive;font-size: 23px;background-color: rgb(203, 80, 75);color: rgb(238,238,238);">
+        <label for="uploadInstruct" style="font-family: 'Oleo Script', cursive;">Select or Drag a File to Upload</label>
+        <br>
+        <input type="file" id="fileInput" class="fileArea" accept=".xlsx, .xls, .csv" style="font-family: 'Oleo Script', cursive;font-size: 150%;background-color: rgb(188,30,23);color: rgb(238,238,238); width: 500px;">
+        <br><br>
+        <button id="uploadFile" class="uploadBtn" style="font-family: 'Oleo Script', cursive;margin: 5px;">Upload</button>
+        <button id="cancelUpload" class="uploadBtn" style="font-family: 'Oleo Script', cursive;margin: 5px;">Cancel</button>
 
     </center>
     
