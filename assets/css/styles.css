@@ -28,3 +28,16 @@
 	font-family: 'Oleo Script', cursive;
 	font-size: 50px;
 }
+
+@media screen and (max-width: 600px)
+{
+	.letter {
+		font-size: 30px;
+	}
+
+	.moving-letters {
+		background-color: black;
+		text-align: center;
+		padding: 10px 0px 10px 0px;
+	}
+}
