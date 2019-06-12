@@ -1,22 +1,49 @@
+body{
+    background: rgb(238, 238, 238);
+}
+
 .uploadArea{
-    margin-top: 150px;
+    width: 60vh;
+    height: 60vh;
+    padding-top: 12vh;
+    position: relative;
+    margin: 5vh;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
 }
 
-label{
-    font-size: 150%
+.uploadArea h1{
+    font-family: 'Oleo Script', regular;
+    font-size: 5vh;
+    text-align: center;
+    color: black;
 }
 
-.uploadBtn{
-    font-size: 150%;
+.uploadArea input[type="file"]{
+    font-family: 'Oleo Script', regular;
+    font-size: 125%;
     background-color: rgb(188,30,23);
-    color: white;
-    width: 100px;
-    margin-top: 5pxpx;
-    border-radius: 5px;
+    color: rgb(238,238,238); 
+    width: 350px;
 }
 
-.uploadBtn:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+.uploadArea input[type="submit"], input[type="button"]{
+    width: 20vh;
+    height: 6vh;
+    border-radius: 5px;
+    background: rgb(188,30,23);
+    color: white;
+    font-family: sans-serif;
+}
+
+.uploadArea input[type="submit"]:hover, input[type="button"]:hover{
+    background: rgb(158, 24, 16);
+}
+
+.uploadArea input[type="submit"]:active, input[type="button"]:active{
+    outline: none;
 }
 
 

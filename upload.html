@@ -34,18 +34,14 @@
 
 <body>
     <div id = "navguest"> </div>
-
-    <center class="uploadArea">
-
-        <label for="uploadInstruct" style="font-family: 'Oleo Script', cursive;">Select or Drag a File to Upload</label>
-        <br>
-        <input type="file" id="fileInput" class="fileArea" accept=".xlsx, .xls, .csv" style="font-family: 'Oleo Script', cursive;font-size: 150%;background-color: rgb(188,30,23);color: rgb(238,238,238); width: 500px;">
-        <br><br>
-        <button id="uploadFile" class="uploadBtn" style="font-family: 'Oleo Script', cursive;margin: 5px;">Upload</button>
-        <button id="cancelUpload" class="uploadBtn" style="font-family: 'Oleo Script', cursive;margin: 5px;">Cancel</button>
-
+    <center>
+        <form class="uploadArea">
+            <h1>Select a File to Upload</h1> <br>
+            <input type="file" id="fileInput"> <br> <br>
+            <input type="submit" id="uploadFile" value="Upload">
+            <input type="button" id="cancelUpload" value="Cancel">
+        </form>
     </center>
-    
     
     <div id = "footer"> </div>
 

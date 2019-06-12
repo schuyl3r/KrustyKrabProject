@@ -3,7 +3,7 @@ const cancelButton =document.querySelector('#cancelUpload');
 const input = document.getElementById("fileInput");
 
 function goHome(){
-    location.href = "index.html";
+   location.href='index.html';
 }
 
 function upload(){
@@ -14,5 +14,5 @@ function upload(){
     }
 }
 
-cancelButton.onclick = goHome;
-uploadButton.onclick = upload;
+uploadButton.addEventListener('click', upload);
+cancelButton.addEventListener('click', goHome);
