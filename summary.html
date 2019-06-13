@@ -9,6 +9,7 @@
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/package/dist/Chart.min.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -37,7 +38,27 @@
     
     
     
-    
+
+      <script>
+
+      
+        let myChart = document.getElementById('summary').getContext('2d');
+
+        let barChart = new Chart(myChart, {
+          type:'bar',
+          data: {
+            labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
+            datasets: [{
+              label: 'Burger Sales',
+              data: [360,260,901]
+            }]
+          },
+          options: {}
+  
+        });
+
+
+      </script>
     
 
 
