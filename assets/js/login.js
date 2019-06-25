@@ -4,7 +4,7 @@ const password = document.querySelector('#passwordInput');
 
 function login() {
 	if (username.value == 'admin' && password.value == 'password') {
-		window.location = 'index.html';
+		window.location.href = 'upload.html';
 	} else {
 		alert('Please check your username or password...');
 	}
