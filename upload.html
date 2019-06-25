@@ -48,9 +48,7 @@
         <div id = "chartType"></div>
 
         <div class = "container">
-
             <canvas id=  "summary"> </canvas>
-    
         </div>
 
 
@@ -80,24 +78,6 @@
 
                     console.log(allNames);
 
-                    var burgersales = result["burger_sales"];
-                    var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
-                    console.log(burgersalesQty);
-
-                    let myChart = document.getElementById('summary').getContext('2d');
-
-                    let barChart = new Chart(myChart, {
-                        type:'bar',
-                        data: {
-                            labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
-                            datasets: [{
-                            label: 'Burger Sales',
-                            data: burgersalesQty
-                            }]
-                        },
-                    options: {}
-    
-                    });
 
 
                     var genSales = document.createElement("BUTTON");
@@ -115,6 +95,49 @@
                     var BurgBySpec = document.createElement("BUTTON");
                     BurgBySpec.innerHTML = "Burger By Species";
                     document.getElementById("chartType").appendChild(BurgBySpec);
+
+
+
+                    function renderGenSales () {
+                    }
+
+
+                    function renderBurgSales () {
+                        var burgersales = result["burger_sales"];
+                        var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
+                        console.log(burgersalesQty);
+
+                        let myChart = document.getElementById('summary').getContext('2d');
+
+                        let barChart = new Chart(myChart, {
+                            type:'bar',
+                            data: {
+                                labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
+                                datasets: [{
+                                label: 'Burger Sales',
+                                data: burgersalesQty
+                                }]
+                            },
+                        options: {}
+        
+                        });
+                    }
+
+
+                    function renderSpecSales () {
+
+                    }
+
+                    function renderBurgBySpec () {
+
+                    }
+
+
+                    genSales.addEventListener('click', renderGenSales);
+                    burgSales.addEventListener('click', renderBurgSales);
+                    specSales.addEventListener('click', renderSpecSales);
+                    BurgBySpec.addEventListener('click', renderBurgBySpec);
+                    
 
                 };
 
