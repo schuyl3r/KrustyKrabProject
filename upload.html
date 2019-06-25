@@ -45,6 +45,8 @@
             <input type="button" id="cancelUpload" value="Cancel">
         </form>
 
+        <div id = "chartType"></div>
+
         <div class = "container">
 
             <canvas id=  "summary"> </canvas>
@@ -96,6 +98,23 @@
                     options: {}
     
                     });
+
+
+                    var genSales = document.createElement("BUTTON");
+                    genSales.innerHTML = "General Sales";
+                    document.getElementById("chartType").appendChild(genSales);
+
+                    var burgSales = document.createElement("BUTTON");
+                    burgSales.innerHTML = "Burger Sales";
+                    document.getElementById("chartType").appendChild(burgSales);
+
+                    var specSales = document.createElement("BUTTON");
+                    specSales.innerHTML = "Species Sales";
+                    document.getElementById("chartType").appendChild(specSales);
+
+                    var BurgBySpec = document.createElement("BUTTON");
+                    BurgBySpec.innerHTML = "Burger By Species";
+                    document.getElementById("chartType").appendChild(BurgBySpec);
 
                 };
 
