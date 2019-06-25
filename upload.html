@@ -12,6 +12,7 @@
     <script src="assets/js/jquery.min.js"></script> 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script defer src="assets/js/upload.js"></script>
+    <script src="assets/package/dist/Chart.min.js"></script>
     
     <script>
          $(document).ready(function(){
@@ -28,6 +29,8 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css//uploadstyle.css"> 
+    
+
 
     <div id = "favicon" > </div>
 </head>
@@ -42,8 +45,11 @@
             <input type="button" id="cancelUpload" value="Cancel">
         </form>
 
-        <textarea id="result">
-        </textarea>
+        <div class = "container">
+
+            <canvas id=  "summary"> </canvas>
+    
+        </div>
 
 
     </center>
@@ -72,14 +78,31 @@
 
                     console.log(allNames);
 
-                    document.getElementById('result').value = formatted;
-
                     var burgersales = result["burger_sales"];
+                    var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
+                    console.log(burgersalesQty);
+
+                    let myChart = document.getElementById('summary').getContext('2d');
+
+                    let barChart = new Chart(myChart, {
+                        type:'bar',
+                        data: {
+                            labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
+                            datasets: [{
+                            label: 'Burger Sales',
+                            data: burgersalesQty
+                            }]
+                        },
+                    options: {}
+    
+                    });
+
                 };
 
 
                 fr.readAsText(files.item(0));
 
+                
                 
 
             };
