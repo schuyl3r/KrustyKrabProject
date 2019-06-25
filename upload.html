@@ -45,10 +45,10 @@
             <input type="button" id="cancelUpload" value="Cancel">
         </form>
 
-        <div class = "container">
+        <div id = "chartType"></div>
 
+        <div class = "container">
             <canvas id=  "summary"> </canvas>
-    
         </div>
 
 
@@ -64,7 +64,6 @@
                 }
 
                 var fr = new FileReader();
-
                 
 
                 fr.onload = function(e) {
@@ -78,45 +77,82 @@
 
                     console.log(allNames);
 
-                    var burgersales = result["burger_sales"];
-                    var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
-                    console.log(burgersalesQty);
 
-                    var species_sales = result["species_sales"];
-                    var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
-                                          species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]];
-                    console.log(salesBySpecies);
+                    var genSales = document.createElement("BUTTON");
+                    genSales.innerHTML = "General Sales";
+                    document.getElementById("chartType").appendChild(genSales);
 
-                    var burger_by_species = result["burger_by_species"];
-                    var combo_Byspecies = burger_by_species["Krusty Combo"];
-                    var pattie_Byspecies = burger_by_species["Krabby Pattie"];
-                    var deluxe_Byspecies = burger_by_species["Krusty Deluxe"];
-                    var combo_sales_species = [combo_Byspecies["leatherback turtle"], combo_Byspecies["salmon"], combo_Byspecies["seahorse"], combo_Byspecies["coral"],
-                                                combo_Byspecies["giant clam"], combo_Byspecies["gray whale"], combo_Byspecies["sea lion"]];
-                    var pattie_sales_species = [pattie_Byspecies["leatherback turtle"], pattie_Byspecies["salmon"], pattie_Byspecies["seahorse"], pattie_Byspecies["coral"],
-                                                pattie_Byspecies["giant clam"], pattie_Byspecies["gray whale"], pattie_Byspecies["sea lion"]];
-                    var deluxe_sales_species = [deluxe_Byspecies["leatherback turtle"], deluxe_Byspecies["salmon"], deluxe_Byspecies["seahorse"], deluxe_Byspecies["coral"],
-                                                deluxe_Byspecies["giant clam"], deluxe_Byspecies["gray whale"], deluxe_Byspecies["sea lion"]];
+                    var burgSales = document.createElement("BUTTON");
+                    burgSales.innerHTML = "Burger Sales";
+                    document.getElementById("chartType").appendChild(burgSales);
 
-                    console.log(combo_sales_species);
-                    console.log(pattie_sales_species);
-                    console.log(deluxe_sales_species);
+                    var specSales = document.createElement("BUTTON");
+                    specSales.innerHTML = "Species Sales";
+                    document.getElementById("chartType").appendChild(specSales);
+
+                    var BurgBySpec = document.createElement("BUTTON");
+                    BurgBySpec.innerHTML = "Burger By Species";
+                    document.getElementById("chartType").appendChild(BurgBySpec);
 
 
-                    let myChart = document.getElementById('summary').getContext('2d');
 
-                    let barChart = new Chart(myChart, {
-                        type:'bar',
-                        data: {
-                            labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
-                            datasets: [{
-                            label: 'Burger Sales',
-                            data: burgersalesQty
-                            }]
-                        },
-                    options: {}
-    
-                    });
+                    function renderGenSales () {
+                    }
+
+
+                    function renderBurgSales () {
+                        var burgersales = result["burger_sales"];
+                        var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
+                        console.log(burgersalesQty);
+
+                        let myChart = document.getElementById('summary').getContext('2d');
+
+                        let barChart = new Chart(myChart, {
+                            type:'bar',
+                            data: {
+                                labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
+                                datasets: [{
+                                label: 'Burger Sales',
+                                data: burgersalesQty
+                                }]
+                            },
+                        options: {}
+        
+                        });
+                    }
+
+
+                    function renderSpecSales () {
+                        var species_sales = result["species_sales"];
+                        var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
+                                            species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]];
+                        console.log(salesBySpecies);
+
+                    }
+
+                    function renderBurgBySpec () {
+                        var burger_by_species = result["burger_by_species"];
+                        var combo_Byspecies = burger_by_species["Krusty Combo"];
+                        var pattie_Byspecies = burger_by_species["Krabby Pattie"];
+                        var deluxe_Byspecies = burger_by_species["Krusty Deluxe"];
+                        var combo_sales_species = [combo_Byspecies["leatherback turtle"], combo_Byspecies["salmon"], combo_Byspecies["seahorse"], combo_Byspecies["coral"],
+                                                    combo_Byspecies["giant clam"], combo_Byspecies["gray whale"], combo_Byspecies["sea lion"]];
+                        var pattie_sales_species = [pattie_Byspecies["leatherback turtle"], pattie_Byspecies["salmon"], pattie_Byspecies["seahorse"], pattie_Byspecies["coral"],
+                                                    pattie_Byspecies["giant clam"], pattie_Byspecies["gray whale"], pattie_Byspecies["sea lion"]];
+                        var deluxe_sales_species = [deluxe_Byspecies["leatherback turtle"], deluxe_Byspecies["salmon"], deluxe_Byspecies["seahorse"], deluxe_Byspecies["coral"],
+                                                    deluxe_Byspecies["giant clam"], deluxe_Byspecies["gray whale"], deluxe_Byspecies["sea lion"]];
+
+                        console.log(combo_sales_species);
+                        console.log(pattie_sales_species);
+                        console.log(deluxe_sales_species);
+                    }
+
+
+                    genSales.addEventListener('click', renderGenSales);
+                    burgSales.addEventListener('click', renderBurgSales);
+                    specSales.addEventListener('click', renderSpecSales);
+                    BurgBySpec.addEventListener('click', renderBurgBySpec);
+                    
 
                 };
 
