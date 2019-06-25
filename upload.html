@@ -82,6 +82,27 @@
                     var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
                     console.log(burgersalesQty);
 
+                    var species_sales = result["species_sales"];
+                    var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
+                                          species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]];
+                    console.log(salesBySpecies);
+
+                    var burger_by_species = result["burger_by_species"];
+                    var combo_Byspecies = burger_by_species["Krusty Combo"];
+                    var pattie_Byspecies = burger_by_species["Krabby Pattie"];
+                    var deluxe_Byspecies = burger_by_species["Krusty Deluxe"];
+                    var combo_sales_species = [combo_Byspecies["leatherback turtle"], combo_Byspecies["salmon"], combo_Byspecies["seahorse"], combo_Byspecies["coral"],
+                                                combo_Byspecies["giant clam"], combo_Byspecies["gray whale"], combo_Byspecies["sea lion"]];
+                    var pattie_sales_species = [pattie_Byspecies["leatherback turtle"], pattie_Byspecies["salmon"], pattie_Byspecies["seahorse"], pattie_Byspecies["coral"],
+                                                pattie_Byspecies["giant clam"], pattie_Byspecies["gray whale"], pattie_Byspecies["sea lion"]];
+                    var deluxe_sales_species = [deluxe_Byspecies["leatherback turtle"], deluxe_Byspecies["salmon"], deluxe_Byspecies["seahorse"], deluxe_Byspecies["coral"],
+                                                deluxe_Byspecies["giant clam"], deluxe_Byspecies["gray whale"], deluxe_Byspecies["sea lion"]];
+
+                    console.log(combo_sales_species);
+                    console.log(pattie_sales_species);
+                    console.log(deluxe_sales_species);
+
+
                     let myChart = document.getElementById('summary').getContext('2d');
 
                     let barChart = new Chart(myChart, {
