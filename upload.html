@@ -79,7 +79,7 @@
 
 
                     var genSales = document.createElement("BUTTON");
-                    genSales.innerHTML = "General Sales";
+                    genSales.innerHTML = "All Sales";
                     document.getElementById("chartType").appendChild(genSales);
 
                     var burgSales = document.createElement("BUTTON");
@@ -93,6 +93,14 @@
                     var BurgBySpec = document.createElement("BUTTON");
                     BurgBySpec.innerHTML = "Burger By Species";
                     document.getElementById("chartType").appendChild(BurgBySpec);
+
+                    var salesByHour = document.createElement("BUTTON");
+                    salesByHour.innerHTML = "Sales By Hour";
+                    document.getElementById("chartType").appendChild(salesByHour);
+
+                    var salesByDay = document.createElement("BUTTON");
+                    salesByDay.innerHTML = "Burger By Species";
+                    document.getElementById("chartType").appendChild(salesByDay);
 
                     var barChart = null;
 
@@ -217,11 +225,22 @@
                         });
                     }
 
+                    function salesByHour () {
+
+                    }
+
+                    function salesByDay () {
+
+                    }
+
+
 
                     genSales.addEventListener('click', renderGenSales);
                     burgSales.addEventListener('click', renderBurgSales);
                     specSales.addEventListener('click', renderSpecSales);
                     BurgBySpec.addEventListener('click', renderBurgBySpec);
+                    salesByHour.addEventListener('click', renderSalesByHour);
+                    salesByDay.addEventListener('click', renderSalesByDay);
                 };
 
 
