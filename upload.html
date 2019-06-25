@@ -94,20 +94,28 @@
                     BurgBySpec.innerHTML = "Burger By Species";
                     document.getElementById("chartType").appendChild(BurgBySpec);
 
+                    var barChart = null;
 
-
+                    renderBurgSales();
+                    
                     function renderGenSales () {
                     }
 
 
                     function renderBurgSales () {
+
+                        if (barChart != null) {
+                            barChart.destroy();
+                        }
+
                         var burgersales = result["burger_sales"];
                         var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
                         console.log(burgersalesQty);
 
-                        let myChart = document.getElementById('summary').getContext('2d');
 
-                        let barChart = new Chart(myChart, {
+                        let myChart = document.getElementById('summary').getContext('2d'); 
+
+                        barChart = new Chart(myChart, {
                             type:'bar',
                             data: {
                                 labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
@@ -123,10 +131,31 @@
 
 
                     function renderSpecSales () {
+
+                        if (barChart != null) {
+                            barChart.destroy();
+                        }
+
                         var species_sales = result["species_sales"];
                         var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
                                             species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]];
                         console.log(salesBySpecies);
+
+
+                        let myChart = document.getElementById('summary').getContext('2d');
+
+                        barChart = new Chart(myChart, {
+                            type:'bar',
+                            data: {
+                                labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
+                                datasets: [{
+                                label: 'Species Sales',
+                                data: salesBySpecies
+                                }]
+                            },
+                        options: {}
+        
+                        });
 
                     }
 
@@ -152,8 +181,6 @@
                     burgSales.addEventListener('click', renderBurgSales);
                     specSales.addEventListener('click', renderSpecSales);
                     BurgBySpec.addEventListener('click', renderBurgBySpec);
-                    
-
                 };
 
 
