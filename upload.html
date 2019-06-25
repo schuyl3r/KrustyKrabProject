@@ -190,6 +190,19 @@
                         console.log(pattie_sales_species);
                         console.log(deluxe_sales_species);
 
+                        var customerIDs = Object.keys(allNames);
+                        console.log(customerIDs);
+
+                        var customers = [];
+
+                        for(var i = 0; i < customerIDs.length; i++){
+                            var custID = allNames[customerIDs[i]];
+                            var customer = {customerNum: custID};
+                            customers.push(customer);
+                        }
+
+                        console.log(customers[1].customerNum); //returns the object from the list
+
 
                         var comboDataset = {
                                     label: 'Krusty Combo Sales',
