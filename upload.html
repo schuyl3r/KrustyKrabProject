@@ -91,12 +91,21 @@
 
                     var customers = [];
 
+                    
                     for(var i = 0; i < customerIDs.length; i++){
                         var custID = allNames[customerIDs[i]];
                         var customer = {customerNum: custID};
-                        customers.push(customer);
+
+                        var customerInfo = [];
+
+                        customerInfo.push(customerIDs[i]);
+                        customerInfo.push(customer.customerNum["datetime"]);
+                        customerInfo.push(customer.customerNum["burger"]);
+                        customerInfo.push(customer.customerNum["species"]);
+                        customers.push(customerInfo);
                     }
 
+            
 
                     var genSales = document.createElement("BUTTON");
                     genSales.innerHTML = "All Sales";
@@ -158,35 +167,28 @@
 
                             var div = document.createElement('div');
                             div.id = 'salesTableDiv';
+                            div.style.padding = '10px 0px 10px 0px';
                             
                             var tbl = document.createElement('table');
                             tbl.id = 'salesTable'
-                            var thead = document.createElement('thead');
-                            var tr = document.createElement('tr');
-                            
-                            var salesID = document.createElement('th');
-                            salesID.innerHTML = "ID";
-                            var salesDate = document.createElement('th');
-                            salesDate.innerHTML= "Date and Time" ;
-                            var salesBurger = document.createElement('th');
-                            salesBurger.innerHTML = "Burger";
-                            var salesSpecies = document.createElement('th');
-                            salesSpecies.innerHTML = "Species";
-
                             tbl.style.width = '100%';
 
                             container.prepend(div);
                             div.append(tbl);
-                            tbl.append(thead);
-                            thead.append(tr);
-                            tr.append(salesID);
-                            tr.append(salesDate);
-                            tr.append(salesBurger);
-                            tr.append(salesSpecies);
                         }
 
+                        
+
                         $(document).ready(function() {
-                            $('#salesTable').DataTable();
+                            $('#salesTable').DataTable( {
+                                data: customers,
+                                columns: [
+                                    { title: "ID" },
+                                    { title: "Date and Time" },
+                                    { title: "Burger" },
+                                    { title: "Species" }
+                                ]
+                            } );
                         } );
 
 
@@ -337,7 +339,7 @@
 
 
                         for (var i = 0; i< customers.length; i++) {
-                            var date = new Date(customers[i].customerNum["datetime"]);
+                            var date = new Date(customers[i][1]);
 
                             if (date.getHours() == 0) {
                                 am12++;
@@ -451,7 +453,7 @@
 
                         for (var i = 0; i< customers.length; i++) {
 
-                            var date = new Date(customers[i].customerNum["datetime"]);
+                            var date = new Date(customers[i][1]);
 
                             if (date.getDay() == 0) {
                                 sunCtr++;
