@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css//uploadstyle.css"> 
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
     
 
 
@@ -44,6 +50,8 @@
             <input type="button" id="import" value="Upload">
             <input type="button" id="cancelUpload" value="Cancel">
         </form>
+
+
 
         <div id = "chartType"></div>
 
@@ -73,9 +81,6 @@
 
                     console.log(result);
 
-                    var allNames = result.sales;
-
-                    console.log(allNames);
 
 
                     var genSales = document.createElement("BUTTON");
@@ -102,11 +107,52 @@
                     salesByDay.innerHTML = "Burger By Species";
                     document.getElementById("chartType").appendChild(salesByDay);
 
+
                     var barChart = null;
 
-                    renderBurgSales();
+                    renderGenSales();
                     
                     function renderGenSales () {
+
+                        if (barChart != null) {
+                            barChart.destroy();
+                        }
+
+                        var allNames = result.sales;
+
+                        console.log(allNames);
+
+
+                        var customerIDs = Object.keys(allNames);
+                        console.log(customerIDs);
+
+                        var customers = [];
+
+                        for(var i = 0; i < customerIDs.length; i++){
+                            var custID = allNames[customerIDs[i]];
+                            var customer = {customerNum: custID};
+                            customers.push(customer);
+                        }
+
+                        console.log(customers[1].customerNum); //returns the object from the list
+
+
+                        
+
+                        var container = document.getElementById("container");
+                        var tbl = document.createElement('table');
+                        var thead = document.createElement('thead');
+                        var tr = document.createElement('tr');
+
+
+                        tbl.style.width = '100%';
+                        tbl.setAttribute('border', '1');
+
+                        $(document).ready(function() {
+                            $('#salesTable').DataTable();
+                        } );
+
+
                     }
 
 
@@ -190,18 +236,6 @@
                         console.log(pattie_sales_species);
                         console.log(deluxe_sales_species);
 
-                        var customerIDs = Object.keys(allNames);
-                        console.log(customerIDs);
-
-                        var customers = [];
-
-                        for(var i = 0; i < customerIDs.length; i++){
-                            var custID = allNames[customerIDs[i]];
-                            var customer = {customerNum: custID};
-                            customers.push(customer);
-                        }
-
-                        console.log(customers[1].customerNum); //returns the object from the list
 
 
                         var comboDataset = {
@@ -238,11 +272,11 @@
                         });
                     }
 
-                    function salesByHour () {
+                    function renderSalesByHour () {
 
                     }
 
-                    function salesByDay () {
+                    function renderSalesByDay () {
 
                     }
 
