@@ -514,10 +514,9 @@
                     function renderDatePicker () {
 
                         resetData();
-
+                        var lastDate = customers[customers.length-1][1];
                         dp = $('#dp').datepicker().data('datepicker');
-                        
-                        var lastDate = customers[customers.length-1][1];              
+                        dp.date = new Date(lastDate);
                         dp.selectDate(lastDate);
 
                         renderSpecificDay(moment(lastDate).format("MM/DD/YYYY"));
