@@ -14,18 +14,10 @@
     <script defer src="assets/js/upload.js"></script>
     <script src="assets/package/dist/Chart.min.js"></script>
     <script src="assets/air-datepicker-master/dist/js/datepicker.min.js"></script>
-
-    <!-- Include English language -->
     <script src="assets/air-datepicker-master/dist/js/i18n/datepicker.en.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     
-    <script>
-         $(document).ready(function(){
-            $('#navguest').load("nav/nav-user.html");
-            $('#footer').load("footer/footer-user.html");
-            $('#favicon').load("favicon.html");
-         });
-    </script>
-   
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
@@ -33,20 +25,16 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css//uploadstyle.css"> 
-
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
     <link href="assets/air-datepicker-master/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
-    
-  
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
-
-
-    
-
-    <div id = "favicon" > </div>
+    <script>
+         $(document).ready(function(){
+            $('#navguest').load("nav/nav-user.html");
+            $('#footer').load("footer/footer-user.html");
+         });
+    </script>
+   
 </head>
 
 <body>
@@ -62,7 +50,6 @@
 
 
         <div id = "chartType"></div>
-
 
         <div class = "container" id = "datadisplay">
             <div id = "dp" data-language='en'>
@@ -161,7 +148,7 @@
                         
                     }
 
-                    renderSalesByHourOfDay();
+                    renderDatePicker();
                     
                     function renderGenSales () {
 
@@ -509,26 +496,171 @@
 
                     var dp = null;
 
-                    function renderSalesByHourOfDay () {
+                    function renderDatePicker () {
 
                         resetData();
-
+                        var lastDate = customers[customers.length-1][1];
                         dp = $('#dp').datepicker().data('datepicker');
-                        dp.selectDate(new Date());
+                        dp.date = new Date(lastDate);
+                        dp.selectDate(lastDate);
 
-                        var selected = new Date('2019-04-05');
+                        renderSpecificDay(moment(lastDate).format("MM/DD/YYYY"));
 
-                        for (var i = 0; i<customers.length; i++) {
+                        $("#dp").datepicker({
+                            onSelect: function(dateText) {
 
-                            var date = new Date(customers[i][1]);
-                            
+                                if(barChart!= null) {
+                                    barChart.destroy();
+                                }
 
-                            if (selected.getTime() == date.getTime()) {
-                                console.log("ok");
+                                renderSpecificDay(dateText);
                             }
+                        });
+
+                    }
+
+                    function renderSpecificDay (selectedDate) {
+
+                        if (selectedDate != '') {
+                            console.log("Selected date: " + selectedDate);
+
+
+                            var nCusPerHour;
+
+                            var am1 = 0;
+                            var am2 = 0;
+                            var am3 = 0;
+                            var am4 = 0;
+                            var am5 = 0;
+                            var am6 = 0;
+                            var am7 = 0;
+                            var am8 = 0;
+                            var am9 = 0;
+                            var am10 = 0;
+                            var am11 = 0;
+                            var pm12 = 0;
+
+                            var pm1 = 0;
+                            var pm2 = 0;
+                            var pm3 = 0;
+                            var pm4 = 0;
+                            var pm5 = 0;
+                            var pm6 = 0;
+                            var pm7 = 0;
+                            var pm8 = 0;
+                            var pm9 = 0;
+                            var pm10 = 0;
+                            var pm11 = 0;
+                            var am12 = 0;
+
+
+                            for (var i = 0; i< customers.length; i++) {
+
+                                var date = new Date(customers[i][1]);
+
+                                if (moment(date).format("MM/DD/YYYY") === selectedDate) {
+
+                                    if (date.getHours() == 0) {
+                                        am12++;
+                                    }
+                                    else if (date.getHours() == 1) {
+                                        am1++;
+                                    }
+                                    else if (date.getHours() == 2) {
+                                        am2++;
+                                    }
+                                    else if (date.getHours() == 3) {
+                                        am3++;
+                                    }
+                                    else if (date.getHours() == 4) {
+                                        am4++;
+                                    }
+                                    else if (date.getHours() == 5) {
+                                        am5++;
+                                    }
+                                    else if (date.getHours() == 6) {
+                                        am6++;
+                                    }
+                                    else if (date.getHours() == 7) {
+                                        am7++;
+                                    }
+                                    else if (date.getHours() == 8) {
+                                        am8++;
+                                    }
+                                    else if (date.getHours() == 9) {
+                                        am9++;
+                                    }
+                                    else if (date.getHours() == 10) {
+                                        am10++;
+                                    }
+                                    else if (date.getHours() == 11) {
+                                        am11++;
+                                    }
+                                    else if (date.getHours() == 12) {
+                                        pm12++;
+                                    }
+                                    else if (date.getHours() == 13) {
+                                        pm1++;
+                                    }
+                                    else if (date.getHours() == 14) {
+                                        pm2++;
+                                    }
+                                    else if (date.getHours() == 15) {
+                                        pm3++;
+                                    }
+                                    else if (date.getHours() == 16) {
+                                        pm4++;
+                                    }
+                                    else if (date.getHours() == 17) {
+                                        pm5++;
+                                    }
+                                    else if (date.getHours() == 18) {
+                                        pm6++;
+                                    }
+                                    else if (date.getHours() == 19) {
+                                        pm7++;
+                                    }
+                                    else if (date.getHours() == 20) {
+                                        pm8++;
+                                    }
+                                    else if (date.getHours() == 21) {
+                                        pm9++;
+                                    }
+                                    else if (date.getHours() == 22) {
+                                        pm10++;
+                                    }
+                                    else if (date.getHours() == 23) {
+                                        pm11++;
+                                    }
+                                }
+
+
+                                nCusPerHour = [am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12,
+                                pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, pm12];
+
+                            }
+
+
+                            let myChart = document.getElementById('summary').getContext('2d'); 
+
+                            barChart = new Chart(myChart, {
+                                type:'line',
+                                data: {
+                                    labels: ['1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm',
+                                    '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'],
+                                    datasets: [{
+                                        label: 'Total Sales Per Hour of the Day on ' + selectedDate,
+                                        data: nCusPerHour
+                                    }]
+                                },
+                                options: {}
+            
+                            });
                         }
 
-                        
+                    
+
+
 
                     }
 
@@ -540,7 +672,7 @@
                     BurgBySpec.addEventListener('click', renderBurgBySpec);
                     salesByHour.addEventListener('click', renderSalesByHour);
                     salesByDay.addEventListener('click', renderSalesByDay);
-                    salesByHourOfDay.addEventListener('click', renderSalesByHourOfDay);
+                    salesByHourOfDay.addEventListener('click', renderDatePicker);
                 };
 
 
