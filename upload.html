@@ -79,11 +79,7 @@
               
                 fr.onload = function(e) {
 
-                    $(document).ready( function () {
-                        $('#salesTable').DataTable();
-                    } );
-
-
+                    
                     console.log(e);
                     var result = JSON.parse(e.target.result);
                     var formatted = JSON.stringify(result, null, 2);
@@ -92,7 +88,6 @@
                     var allNames = result.sales;
 
                     var customerIDs = Object.keys(allNames);
-                    console.log(customerIDs);
 
                     var customers = [];
 
