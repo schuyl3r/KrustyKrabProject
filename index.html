@@ -11,16 +11,6 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
-  <script>
-    $(document).ready(function () {
-      $('#navguest').load("nav/nav-user.html");
-      $('#footer').load("footer/footer-user.html");
-      $('#favicon').load("favicon.html");
-    });
-  </script>
-
-  <script>var ml = { timelines: {} };</script>
-
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
@@ -28,7 +18,14 @@
   <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <div id = "favicon"> </div>
+  <script>
+    $(document).ready(function () {
+      $('#navguest').load("nav/nav-user.html");
+      $('#footer').load("footer/footer-user.html");
+    });
+
+    var ml = { timelines: {} };
+  </script>
 
 </head>
 
