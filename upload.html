@@ -13,6 +13,10 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script defer src="assets/js/upload.js"></script>
     <script src="assets/package/dist/Chart.min.js"></script>
+    <script src="assets/air-datepicker-master/dist/js/datepicker.min.js"></script>
+
+    <!-- Include English language -->
+    <script src="assets/air-datepicker-master/dist/js/i18n/datepicker.en.js"></script>
     
     <script>
          $(document).ready(function(){
@@ -32,6 +36,9 @@
 
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <link href="assets/air-datepicker-master/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
@@ -57,7 +64,7 @@
 
 
         <div class = "container" id = "datadisplay">
-            <div id = "datepicker">
+            <div id = "dp" data-language='en'>
             </div>
             <canvas id=  "summary"> </canvas>
         </div>
@@ -66,7 +73,7 @@
     </center>
 
        
-        <script> 
+        <script>
             document.getElementById('import').onclick = function() {
                 var files = document.getElementById('selectFiles').files;
                 console.log(files);
@@ -145,7 +152,6 @@
                         }
 
                         var container = document.getElementById("datadisplay");
-
                         if (container.contains(document.getElementById('salesTableDiv'))) {
                             var element = document.getElementById("salesTableDiv");
                             element.parentNode.removeChild(element);
@@ -502,7 +508,8 @@
                     function renderSalesByHourOfDay () {
 
                         resetData();
-
+                        var dp = $('#dp').datepicker().data('datepicker');
+                        dp.selectDate(new Date());
                     }
 
 
