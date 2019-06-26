@@ -8,7 +8,6 @@ function goHome() {
 
 function upload() {
 	if (input.value != '') {
-		alert('File Uploaded!');
 	} else {
 		alert('No File Selected!');
 	}

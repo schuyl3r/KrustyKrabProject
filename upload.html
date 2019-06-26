@@ -84,9 +84,7 @@
                     var result = JSON.parse(e.target.result);
                     var formatted = JSON.stringify(result, null, 2);
 
-
                     var allNames = result.sales;
-
                     var customerIDs = Object.keys(allNames);
 
                     var customers = [];
@@ -105,7 +103,7 @@
                         customers.push(customerInfo);
                     }
 
-            
+                    document.getElementById("chartType").innerHTML = "";
 
                     var genSales = document.createElement("BUTTON");
                     genSales.innerHTML = "All Sales";
@@ -154,7 +152,7 @@
                         
                     }
 
-                    renderGenSales();
+                    renderSalesByHourOfDay();
                     
                     function renderGenSales () {
 
@@ -500,8 +498,19 @@
                     }
 
                     function renderSalesByHourOfDay () {
-
                         resetData();
+
+                        var selected = new Date('2019-04-05');
+
+                        for (var i = 0; i<customers.length; i++) {
+
+                            var date = new Date(customers[i][1]);
+                            
+
+                            if (selected.getTime() == date.getTime()) {
+                                console.log("ok");
+                            }
+                        }
 
                     }
 
