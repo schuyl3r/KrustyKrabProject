@@ -51,10 +51,11 @@
 
 <body>
     <div id = "navguest"> </div>
-    <center>
+    
+        <center>
         <form class="uploadArea">
-            <h1>Select a File to Upload</h1> <br>
-            <input type="file" id="selectFiles" value = "Import" accept=".json"> <br> <br>
+            <h1>Select a File to Upload</h1>
+            <input type="file" id="selectFiles" value = "Import" accept=".json"> <br>
             <input type="button" id="import" value="Upload">
             <input type="button" id="cancelUpload" value="Cancel">
         </form>
@@ -69,10 +70,8 @@
             <canvas id=  "summary"> </canvas>
         </div>
 
+        </center>
 
-    </center>
-
-       
         <script>
             document.getElementById('import').onclick = function() {
                 var files = document.getElementById('selectFiles').files;
