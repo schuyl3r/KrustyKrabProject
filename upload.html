@@ -79,8 +79,18 @@
                     var result = JSON.parse(e.target.result);
                     var formatted = JSON.stringify(result, null, 2);
 
-                    console.log(result);
+                    var allNames = result.sales;
 
+                    var customerIDs = Object.keys(allNames);
+                    console.log(customerIDs);
+
+                    var customers = [];
+
+                    for(var i = 0; i < customerIDs.length; i++){
+                        var custID = allNames[customerIDs[i]];
+                        var customer = {customerNum: custID};
+                        customers.push(customer);
+                    }
 
 
                     var genSales = document.createElement("BUTTON");
@@ -104,13 +114,13 @@
                     document.getElementById("chartType").appendChild(salesByHour);
 
                     var salesByDay = document.createElement("BUTTON");
-                    salesByDay.innerHTML = "Burger By Species";
+                    salesByDay.innerHTML = "Sales By Day";
                     document.getElementById("chartType").appendChild(salesByDay);
 
 
                     var barChart = null;
 
-                    renderGenSales();
+                    renderSalesByDay();
                     
                     function renderGenSales () {
 
@@ -118,26 +128,8 @@
                             barChart.destroy();
                         }
 
-                        var allNames = result.sales;
-
-                        console.log(allNames);
-
-
-                        var customerIDs = Object.keys(allNames);
-                        console.log(customerIDs);
-
-                        var customers = [];
-
-                        for(var i = 0; i < customerIDs.length; i++){
-                            var custID = allNames[customerIDs[i]];
-                            var customer = {customerNum: custID};
-                            customers.push(customer);
-                        }
-
-                        console.log(customers[1].customerNum); //returns the object from the list
-
-
                         
+
 
                         var container = document.getElementById("container");
                         var tbl = document.createElement('table');
@@ -278,6 +270,68 @@
 
                     function renderSalesByDay () {
 
+                        if (barChart != null) {
+                            barChart.destroy();
+                        }
+
+                        var nCusPerDay;
+
+                        var monCtr = 0;
+                        var tuesCtr = 0;
+                        var wedCtr = 0;
+                        var thursCtr = 0;
+                        var friCtr = 0;
+                        var satCtr = 0;
+                        var sunCtr = 0;
+
+                        for (var i = 0; i< customers.length; i++) {
+
+                            var date = new Date(customers[i].customerNum["datetime"]);
+
+                            if (date.getDay() == 0) {
+                                sunCtr++;
+                            }
+                            else if (date.getDay() == 1) {
+                                monCtr++;
+                            }
+                            else if (date.getDay() == 2) {
+                                tuesCtr++;
+                            }
+                            else if (date.getDay() == 3) {
+                                wedCtr++;
+                            }
+                            else if (date.getDay() == 4) {
+                                thursCtr++;
+                            }
+                            else if (date.getDay() == 5) {
+                                friCtr++;
+                            }
+                            else if (date.getDay() == 6) {
+                                satCtr++;
+                            }
+                        
+                            nCusPerDay = [sunCtr, monCtr, tuesCtr, wedCtr, thursCtr, friCtr, satCtr];
+                        }
+
+                        console.log(nCusPerDay);
+
+                        let myChart = document.getElementById('summary').getContext('2d'); 
+
+                        barChart = new Chart(myChart, {
+                            type:'line',
+                            data: {
+                                labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                datasets: [{
+                                    label: 'Burger Sales Per Day of the Week',
+                                    data: nCusPerDay
+                                }]
+                            },
+                            options: {}
+        
+                        });
+
+
+                        
                     }
 
 
