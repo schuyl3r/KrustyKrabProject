@@ -145,9 +145,11 @@
 
 
                     function resetData () {
-                        if (barChart != null) {
+                       
+                        if(barChart!= null) {
                             barChart.destroy();
                         }
+
 
                         var container = document.getElementById("datadisplay");
                         if (container.contains(document.getElementById('salesTableDiv'))) {
@@ -155,6 +157,8 @@
                             element.parentNode.removeChild(element);
                         }
                         
+                        $('#dp').datepicker().data('datepicker').destroy();
+        
                         
                     }
 
@@ -503,10 +507,14 @@
                         
                     }
 
+
+                    var dp = null;
+
                     function renderSalesByHourOfDay () {
+
                         resetData();
 
-                        var dp = $('#dp').datepicker().data('datepicker');
+                        dp = $('#dp').datepicker().data('datepicker');
                         dp.selectDate(new Date());
 
                         var selected = new Date('2019-04-05');
