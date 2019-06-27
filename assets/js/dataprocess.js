@@ -1,6 +1,7 @@
 
 document.getElementById('import').onclick = function() {
 
+
     var files = document.getElementById('selectFiles').files;
 
     if (files.length <= 0) {
@@ -12,15 +13,10 @@ document.getElementById('import').onclick = function() {
     fr.onload = function(e) {
 
 
-        var container = document.getElementById("mainTable");
-        if (container.contains(document.getElementById('salesTableDiv'))) {
-            var element = document.getElementById("salesTableDiv");
-            element.parentNode.removeChild(element);
-        }
+        displayDiagrams();
 
         var mainChart = null;
         
-
         var result = JSON.parse(e.target.result);
         var formatted = JSON.stringify(result, null, 2);
 
@@ -552,16 +548,30 @@ document.getElementById('import').onclick = function() {
                 });
             }
 
-        
 
 
+        }
 
+        function displayDiagrams () {
+
+            var container = document.getElementById("mainTable");
+            if (container.contains(document.getElementById('salesTableDiv'))) {
+                var element = document.getElementById("salesTableDiv");
+                element.parentNode.removeChild(element);
+            }
+
+            var divs = document.getElementsByClassName("diagram");
+            for (var i = 0; i<divs.length; i++) {
+                divs[i].style.display = "block";
+            }
         }
 
     };
 
 
     fr.readAsText(files.item(0));
+
+
 
 
 };

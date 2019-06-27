@@ -1,77 +1,142 @@
-body{
-    background: rgb(238, 238, 238);
-    justify-content: center;
+body {
+	background: rgb(238, 238, 238);
+	justify-content: center;
 }
 
-.uploadArea{
-    width: 60%;
-    height: 20vh;
-    padding-top: 3vh;
-    position: relative;
-    margin: 3vh;
-    text-align: center;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
-    align-self: auto;
+.uploadArea {
+	width: 60%;
+	height: 20vh;
+	padding-top: 3vh;
+	position: relative;
+	margin: 3vh;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
 }
 
-.uploadArea h1{
-    font-family: 'Oleo Script', regular;
-    font-size: 3vh;
-    text-align: center;
-    color: black;
+.uploadArea h1 {
+	font-family: 'Oleo Script', regular;
+	font-size: 3vh;
+	text-align: center;
+	color: black;
 }
 
-.uploadArea input[type="file"]{
-    font-family: 'Oleo Script', regular;
-    font-size: 100%;
-    background-color: rgb(188,30,23);
-    color: rgb(238,238,238); 
-    width: 60%;
+.uploadArea input[type="file"] {
+	font-family: 'Oleo Script', regular;
+	font-size: 100%;
+	background-color: rgb(188, 30, 23);
+	color: rgb(238, 238, 238);
+	width: 60%;
 }
 
-.uploadArea input[type="submit"], input[type="button"]{
-    width: 10vh;
-    height: 5vh;
-    border-radius: 5px;
-    background: rgb(188,30,23);
-    color: white;
-    font-family: sans-serif;
-    font-size: 2vh;
-    margin-top: 1vh;
+.uploadArea input[type="submit"],
+input[type="button"] {
+	width: 10vh;
+	height: 5vh;
+	border-radius: 5px;
+	background: rgb(188, 30, 23);
+	color: white;
+	font-family: sans-serif;
+	font-size: 2vh;
+	margin-top: 1vh;
 }
 
-.uploadArea input[type="submit"]:hover, input[type="button"]:hover{
-    background: rgb(158, 24, 16);
+.uploadArea input[type="submit"]:hover,
+input[type="button"]:hover {
+	background: rgb(158, 24, 16);
 }
 
-.uploadArea input[type="submit"]:active, input[type="button"]:active{
-    outline: none;
+.uploadArea input[type="submit"]:active,
+input[type="button"]:active {
+	outline: none;
 }
 
-#chartType button{
-    border-radius: 5px;
-    display: inline block;
-    margin: 0px;
-    color: white;
-    background-color: rgb(188,30,23);
-    padding: 10px;
+#chartType button {
+	border-radius: 5px;
+	display: inline block;
+	margin: 0px;
+	color: white;
+	background-color: rgb(188, 30, 23);
+	padding: 10px;
 }
 
-#salesTable{
-    background-color: rgb(188,30,23);
-    border-radius: 5px;
+#salesTable {
+	background-color: rgb(188, 30, 23);
+	border-radius: 5px;
 }
 
-#salesTable th{
-    color: white;
+#salesTable th {
+	color: white;
 }
 
-#salesTable tr:hover{
-    background-color: #f5f5f5;
+#salesTable tr:hover {
+	background-color: #f5f5f5;
 }
 
+#burgerSalesDiv {
+	padding-top: 3vh;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+}
 
+#speciesSalesDiv {
+	padding-top: 3vh;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+}
 
+#burgerBySpecDiv {
+	padding-top: 3vh;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+}
 
+#salesByHourDiv {
+	padding-top: 3vh;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+}
+
+#salesByDayDiv {
+	padding-top: 3vh;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+}
+
+#specificDaySalesDiv {
+	padding-top: 3px;
+	position: relative;
+	text-align: center;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 3px 3px rgb(201, 200, 200);
+	align-self: auto;
+	justify-content: center;
+}
+
+.diagram {
+	margin: 20px 0px 20px 0px;
+	display: none;
+}
