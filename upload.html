@@ -51,40 +51,84 @@
 
         <div id = "chartType"></div>
 
-        <div class = "container" id = "datadisplay">
-            <div id = "dp" data-language='en'>
+        <div class = "container">
+
+
+            <div id = "mainTable">
             </div>
-            <canvas id=  "summary"> </canvas>
+
+            <div class = "diagram" id = "burgerSalesDiv">
+                <canvas id=  "burgerSalesBar"> </canvas>
+            </div>
+            
+
+            <div class = "diagram" id = "speciesSalesDiv">
+                <canvas id = "speciesSalesBar"> </canvas>
+            </div>
+            
+
+
+            <div class = "diagram" id = "burgerBySpecDiv"> 
+                <canvas id = "burgerBySpecBar"> </canvas>
+            </div>
+            
+
+            <div class = "diagram" id = "salesByHourDiv">
+                <canvas id ="salesByHourLine"> </canvas>
+            </div>
+            
+
+            <div class = "diagram" id = "salesByDayDiv">
+                 <canvas id = "salesByDayLine"> </canvas>
+            </div>
+            
+
+            <div class = "diagram" id = "specificDaySalesDiv">
+                <div id = "dp" data-language='en'> </div>
+                <canvas id = "specificDaySalesLine"> </canvas>
+            </div>
+            
+
         </div>
 
         </center>
 
         <script>
             document.getElementById('import').onclick = function() {
+
                 var files = document.getElementById('selectFiles').files;
-                console.log(files);
+
                 if (files.length <= 0) {
                     return false;
                 }
 
                 var fr = new FileReader();
                 
-              
                 fr.onload = function(e) {
 
+                    var mainChart = null;
                     
-                    console.log(e);
+
                     var result = JSON.parse(e.target.result);
                     var formatted = JSON.stringify(result, null, 2);
 
-                    var allNames = result.sales;
-                    var customerIDs = Object.keys(allNames);
+                    var dataEntries = result.sales;
+                    var customerIDs = Object.keys(dataEntries);
 
                     var customers = [];
-
                     
-                    for(var i = 0; i < customerIDs.length; i++){
-                        var custID = allNames[customerIDs[i]];
+                    getAllData();
+                    renderGenSales();
+                    renderBurgSales();
+                    renderSpecSales();
+                    renderBurgBySpec();
+                    renderSalesByHour();
+                    renderSalesByDay();
+                    renderDatePicker();
+
+                    function getAllData() {
+                        for(var i = 0; i < customerIDs.length; i++){
+                        var custID = dataEntries[customerIDs[i]];
                         var customer = {customerNum: custID};
 
                         var customerInfo = [];
@@ -94,68 +138,13 @@
                         customerInfo.push(customer.customerNum["burger"]);
                         customerInfo.push(customer.customerNum["species"]);
                         customers.push(customerInfo);
+                        }
                     }
 
-                    document.getElementById("chartType").innerHTML = "";
 
-                    var genSales = document.createElement("BUTTON");
-                    genSales.innerHTML = "All Sales";
-                    document.getElementById("chartType").appendChild(genSales);
-
-                    var burgSales = document.createElement("BUTTON");
-                    burgSales.innerHTML = "Burger Sales";
-                    document.getElementById("chartType").appendChild(burgSales);
-
-                    var specSales = document.createElement("BUTTON");
-                    specSales.innerHTML = "Species Sales";
-                    document.getElementById("chartType").appendChild(specSales);
-
-                    var BurgBySpec = document.createElement("BUTTON");
-                    BurgBySpec.innerHTML = "Burger By Species";
-                    document.getElementById("chartType").appendChild(BurgBySpec);
-
-                    var salesByHour = document.createElement("BUTTON");
-                    salesByHour.innerHTML = "Total Sales By Hour";
-                    document.getElementById("chartType").appendChild(salesByHour);
-
-                    var salesByDay = document.createElement("BUTTON");
-                    salesByDay.innerHTML = "Total Sales By Day";
-                    document.getElementById("chartType").appendChild(salesByDay);
-
-                    var salesByHourOfDay = document.createElement("BUTTON");
-                    salesByHourOfDay.innerHTML = "Day Sales By Hour";
-                    document.getElementById("chartType").appendChild(salesByHourOfDay);
-
-
-                    var barChart = null;
-
-
-                    function resetData () {
-                       
-                        if(barChart!= null) {
-                            barChart.destroy();
-                        }
-
-
-                        var container = document.getElementById("datadisplay");
-                        if (container.contains(document.getElementById('salesTableDiv'))) {
-                            var element = document.getElementById("salesTableDiv");
-                            element.parentNode.removeChild(element);
-                        }
-                        
-                        $('#dp').datepicker().data('datepicker').destroy();
-        
-                        
-                    }
-
-                    renderGenSales();
-                    
                     function renderGenSales () {
 
-                        resetData();
-
-                        var container = document.getElementById("datadisplay");
-
+                        var container = document.getElementById("mainTable");
 
                         if (!container.contains(document.getElementById('salesTable'))) {
 
@@ -189,18 +178,18 @@
                     }
 
 
-                    function renderBurgSales () {
 
-                        resetData();
+
+                    function renderBurgSales () {
 
                         var burgersales = result["burger_sales"];
                         var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
                         console.log(burgersalesQty);
 
 
-                        let myChart = document.getElementById('summary').getContext('2d'); 
+                        let myChart = document.getElementById('burgerSalesBar').getContext('2d'); 
 
-                        barChart = new Chart(myChart, {
+                        mainChart = new Chart(myChart, {
                             type:'bar',
                             data: {
                                 labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
@@ -217,7 +206,6 @@
 
                     function renderSpecSales () {
 
-                        resetData();
 
                         var species_sales = result["species_sales"];
                         var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
@@ -225,10 +213,10 @@
                         console.log(salesBySpecies);
 
 
-                        let myChart = document.getElementById('summary').getContext('2d');
+                        let myChart = document.getElementById('speciesSalesBar').getContext('2d');
 
-                        barChart = new Chart(myChart, {
-                            type:'pie',
+                        mainChart = new Chart(myChart, {
+                            type:'bar',
                             data: {
                                 labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
                                 datasets: [{
@@ -244,7 +232,6 @@
 
                     function renderBurgBySpec () {
 
-                        resetData();
 
                         var burger_by_species = result["burger_by_species"];
 
@@ -286,9 +273,9 @@
 
                         
 
-                        let myChart = document.getElementById('summary').getContext('2d');
+                        let myChart = document.getElementById('burgerBySpecBar').getContext('2d');
 
-                        barChart = new Chart(myChart, {
+                        mainChart = new Chart(myChart, {
                             type:'bar',
                             data: {
                                 labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
@@ -300,8 +287,6 @@
                     }
 
                     function renderSalesByHour () {
-
-                        resetData();
 
                         var nCusPerHour;
 
@@ -414,9 +399,9 @@
                         }
 
 
-                        let myChart = document.getElementById('summary').getContext('2d'); 
+                        let myChart = document.getElementById('salesByHourLine').getContext('2d'); 
 
-                        barChart = new Chart(myChart, {
+                        mainChart = new Chart(myChart, {
                             type:'line',
                             data: {
                                 labels: ['1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm',
@@ -432,8 +417,6 @@
                     }
 
                     function renderSalesByDay () {
-
-                        resetData();
 
                         var nCusPerDay;
 
@@ -476,9 +459,9 @@
 
                         console.log(nCusPerDay);
 
-                        let myChart = document.getElementById('summary').getContext('2d'); 
+                        let myChart = document.getElementById('salesByDayLine').getContext('2d'); 
 
-                        barChart = new Chart(myChart, {
+                        mainChart = new Chart(myChart, {
                             type:'line',
                             data: {
                                 labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -498,7 +481,6 @@
 
                     function renderDatePicker () {
 
-                        resetData();
                         var lastDate = customers[customers.length-1][1];
                         dp = $('#dp').datepicker().data('datepicker');
                         dp.date = new Date(lastDate);
@@ -509,8 +491,8 @@
                         $("#dp").datepicker({
                             onSelect: function(dateText) {
 
-                                if(barChart!= null) {
-                                    barChart.destroy();
+                                if(mainChart!= null) {
+                                    mainChart.destroy();
                                 }
 
                                 renderSpecificDay(dateText);
@@ -641,9 +623,9 @@
                             }
 
 
-                            let myChart = document.getElementById('summary').getContext('2d'); 
+                            let myChart = document.getElementById('specificDaySalesLine').getContext('2d'); 
 
-                            barChart = new Chart(myChart, {
+                            mainChart = new Chart(myChart, {
                                 type:'line',
                                 data: {
                                     labels: ['1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm',
@@ -664,15 +646,6 @@
 
                     }
 
-
-
-                    genSales.addEventListener('click', renderGenSales);
-                    burgSales.addEventListener('click', renderBurgSales);
-                    specSales.addEventListener('click', renderSpecSales);
-                    BurgBySpec.addEventListener('click', renderBurgBySpec);
-                    salesByHour.addEventListener('click', renderSalesByHour);
-                    salesByDay.addEventListener('click', renderSalesByDay);
-                    salesByHourOfDay.addEventListener('click', renderDatePicker);
                 };
 
 
