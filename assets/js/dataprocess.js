@@ -11,6 +11,13 @@ document.getElementById('import').onclick = function() {
     
     fr.onload = function(e) {
 
+
+        var container = document.getElementById("mainTable");
+        if (container.contains(document.getElementById('salesTableDiv'))) {
+            var element = document.getElementById("salesTableDiv");
+            element.parentNode.removeChild(element);
+        }
+
         var mainChart = null;
         
 
@@ -359,7 +366,7 @@ document.getElementById('import').onclick = function() {
                     satCtr++;
                 }
             
-                nCusPerDay = [sunCtr, monCtr, tuesCtr, wedCtr, thursCtr, friCtr, satCtr];
+                nCusPerDay = [thursCtr, friCtr, satCtr, sunCtr, monCtr, tuesCtr, wedCtr];
             }
 
             console.log(nCusPerDay);
@@ -369,7 +376,7 @@ document.getElementById('import').onclick = function() {
             mainChart = new Chart(myChart, {
                 type:'line',
                 data: {
-                    labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                    labels: ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'],
                     datasets: [{
                         label: 'Total Sales Per Day of the Week',
                         data: nCusPerDay
