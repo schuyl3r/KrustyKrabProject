@@ -332,7 +332,7 @@ document.getElementById('import').onclick = function() {
                     datasets: [{
                         label: 'Total Sales Per Hour of the Day',
                         data: nCusPerHour,
-                        backgroundColor: 'rgba(0, 1, 13, 0.6)'
+                        backgroundColor: 'rgba(206, 23, 47, 0.6)'
                     }]
                 },
                 options: {}
@@ -638,7 +638,7 @@ document.getElementById('import').onclick = function() {
                         datasets: [{
                             label: 'Total Sales Per Hour of the Day on ' + selectedDate,
                             data: nCusPerHour,
-                            backgroundColor: 'rgba(0, 1, 13, 0.6)'
+                            backgroundColor: 'rgba(206, 23, 47, 0.6)'
                         }]
                     },
                     options: {}

@@ -75,7 +75,8 @@ input[type="button"]:active {
 	background-color: white;
 	color: rgba(0, 1, 13);
 	font-family: 'Oleo Script';
-	font-size: 120;
+	font-size: 115%;
+	border: 0.1px solid rgba(0, 1, 13);
 }
 
 #burgerSalesDiv {
