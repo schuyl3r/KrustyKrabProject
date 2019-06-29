@@ -33,16 +33,24 @@
 <body>
     <div id = "navguest"> </div>
     <center>
-    <form class="loginArea">
+    <form class="loginArea" id="login">
         <h1>Login</h1>
         <input type="text" id="usernameInput" placeholder="Username">
         <input type="password" id="passwordInput" placeholder="Password">
-        <input type="button" id="loginUser" value="Login">
+        <input type="submit" id="loginUser" value="Login">
     </form>
     </center>
 
     <script>
+        $('.loginArea').submit(function(e){
+            e.preventDefault();
+            logIn();
+        })
         document.getElementById('loginUser').onclick = function(){
+            logIn();
+        }
+
+        function logIn(){
             var username = document.getElementById('usernameInput');
             var password = document.getElementById('passwordInput');
 

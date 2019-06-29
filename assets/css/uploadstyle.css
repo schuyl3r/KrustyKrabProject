@@ -71,6 +71,13 @@ input[type="button"]:active {
 	font-size: 120%;
 }
 
+#salesTable td{
+	background-color: white;
+	color: rgba(0, 1, 13);
+	font-family: 'Oleo Script';
+	font-size: 120;
+}
+
 #burgerSalesDiv {
 	padding-top: 3vh;
 	margin-left: 3vh;

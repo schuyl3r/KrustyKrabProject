@@ -42,7 +42,7 @@ body{
     width: 31vh;
 }
 
-.loginArea input[type="button"]{
+.loginArea input[type="submit"]{
     width: 30vh;
     height: 6vh;
     border-radius: 5px;
