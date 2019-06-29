@@ -12,7 +12,8 @@ document.getElementById('import').onclick = function() {
     
     fr.onload = function(e) {
 
-
+        Chart.defaults.global.defaultFontFamily = 'Oleo Script';
+        Chart.defaults.global.defaultFontColor = 'rgba(0, 1, 13)';
         displayDiagrams();
 
         var mainChart = null;
@@ -103,7 +104,12 @@ document.getElementById('import').onclick = function() {
                     labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
                     datasets: [{
                         label: 'Total Sales Per Burger',
-                        data: burgersalesQty
+                        data: burgersalesQty,
+                        backgroundColor: [
+                            'rgb(206, 23, 47)',
+                            'rgb(0, 1, 13)',
+                            'rgb(206, 23, 47)'
+                        ]
                     }]
                 },
                 options: {}
@@ -129,7 +135,16 @@ document.getElementById('import').onclick = function() {
                     labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
                     datasets: [{
                         label: 'Total Sales Per Species',
-                        data: salesBySpecies
+                        data: salesBySpecies,
+                        backgroundColor: [
+                            'rgb(206, 23, 47)',
+                            'rgb(0, 1, 13)',
+                            'rgb(206, 23, 47)',
+                            'rgb(0, 1, 13)',
+                            'rgb(206, 23, 47)',
+                            'rgb(0, 1, 13)',
+                            'rgb(206, 23, 47)'
+                        ]
                     }]
                 },
                     options: {}
@@ -163,20 +178,20 @@ document.getElementById('import').onclick = function() {
             var comboDataset = {
                         label: 'Krusty Combo Sales',
                         data: combo_sales_species,
-                        backgroundColor: 'rgba(0, 99, 132, 0.6)'
+                        backgroundColor: 'rgba(206, 23, 47)'
 
             };
 
             var deluxeDataset = {
                         label: 'Krusty Deluxe Sales',
                         data: deluxe_sales_species,
-                        backgroundColor: 'rgba(99, 132, 0, 0.6)'
+                        backgroundColor: 'rgba(115, 24, 30)'
             };
 
             var pattieDataset = {
                         label: 'Krabby Pattie Sales',
                         data: pattie_sales_species,
-                        backgroundColor: 'rgba(0, 99, 0, 0.6)'
+                        backgroundColor: 'rgba(0, 1, 13)'
             };
 
             
@@ -316,7 +331,8 @@ document.getElementById('import').onclick = function() {
                         '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'],
                     datasets: [{
                         label: 'Total Sales Per Hour of the Day',
-                        data: nCusPerHour
+                        data: nCusPerHour,
+                        backgroundColor: 'rgba(0, 1, 13, 0.6)'
                     }]
                 },
                 options: {}
@@ -375,7 +391,8 @@ document.getElementById('import').onclick = function() {
                     labels: ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'],
                     datasets: [{
                         label: 'Total Sales Per Day of the Week',
-                        data: nCusPerDay
+                        data: nCusPerDay,
+                        backgroundColor: 'rgba(206, 23, 47, 0.6)'
                     }]
                 },
                 options: {}
@@ -620,7 +637,8 @@ document.getElementById('import').onclick = function() {
                         '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'],
                         datasets: [{
                             label: 'Total Sales Per Hour of the Day on ' + selectedDate,
-                            data: nCusPerHour
+                            data: nCusPerHour,
+                            backgroundColor: 'rgba(0, 1, 13, 0.6)'
                         }]
                     },
                     options: {}

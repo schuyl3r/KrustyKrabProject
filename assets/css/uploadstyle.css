@@ -67,6 +67,8 @@ input[type="button"]:active {
 
 #salesTable th {
 	color: white;
+	font-family: 'Oleo Script';
+	font-size: 120%;
 }
 
 #burgerSalesDiv {
