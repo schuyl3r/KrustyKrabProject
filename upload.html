@@ -44,60 +44,55 @@
 <body>
 
     <div id = "navguest"> </div>
-    
-        <center>
-
-        <form class="uploadArea">
-            <h1>Select a File to Upload</h1>
-            <input type="file" id="selectFiles" value = "Import" accept=".json"> <br>
-            <input type="button" id="import" value="Upload">
-            <input type="button" id="cancelUpload" value="Cancel">
-        </form>
 
         <div class = "container" >
 
+            <div id="upperRight">
+                <form class="uploadArea">
+                    <h1>Select a File to Upload</h1>
+                    <input type="file" id="selectFiles" value = "Import" accept=".json"> <br>
+                    <input type="button" id="import" value="Upload">
+                    <input type="button" id="cancelUpload" value="Cancel">
+                </form>
 
-            <div id = "mainTable">
-            </div>
-
-            <div class = "diagram" id = "burgerSalesDiv">
-                <canvas id=  "burgerSalesBar"> </canvas>
-            </div>
-            
-
-            <div class = "diagram" id = "speciesSalesDiv">
-                <canvas id = "speciesSalesBar"> </canvas>
-            </div>
-            
-
-
-            <div class = "diagram" id = "burgerBySpecDiv"> 
-                <canvas id = "burgerBySpecBar"> </canvas>
+                <div class = "diagram" id = "burgerSalesDiv">
+                    <canvas id=  "burgerSalesBar"> </canvas>
+                </div>
+                    
+                <div class = "diagram" id = "speciesSalesDiv">
+                    <canvas id = "speciesSalesBar"> </canvas>
+                </div>
             </div>
             
-
-            <div class = "diagram" id = "salesByHourDiv">
-                <canvas id ="salesByHourLine"> </canvas>
+            <div id="upperLeft">
+                <div class = "diagram" id = "specificDaySalesDiv">
+                    <div id="duo">
+                        <div id= "clockdiv"> <canvas id="clock" width="150" height="150"></canvas> </div>
+                        <div id = "dp" data-language='en'> </div>
+                    </div>
+                    <canvas id = "specificDaySalesLine"> </canvas>
+                </div>
             </div>
             
+            <div id="middle">
+                <div class = "diagram" id = "burgerBySpecDiv"> 
+                    <canvas id = "burgerBySpecBar"> </canvas>
+                </div>
 
-            <div class = "diagram" id = "salesByDayDiv">
-                 <canvas id = "salesByDayLine"> </canvas>
+                <div class = "diagram" id = "salesByHourDiv">
+                    <canvas id ="salesByHourLine"> </canvas>
+                </div>
+                
+                <div class = "diagram" id = "salesByDayDiv">
+                    <canvas id = "salesByDayLine"> </canvas>
+                </div>
             </div>
-            
 
-            <div class = "diagram" id = "specificDaySalesDiv">
-                <canvas id="clock" width="250" height="250"></canvas>
-                <div id = "dp" data-language='en'> </div>
-                <canvas id = "specificDaySalesLine"> </canvas>
-            </div>
+            <div id = "mainTable"> </div>
 
             <script type = "text/javascript" src = "assets/js/dataprocess.js"> </script>
             
         </div>
-
-        </center>
-
     
     <div id = "footer"> </div>
 

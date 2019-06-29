@@ -389,13 +389,6 @@ document.getElementById('import').onclick = function() {
 
         function renderDatePicker () {
 
-            var canvas = document.getElementById("clock");
-            var ctx = canvas.getContext("2d");
-            var radius = canvas.height / 2;
-            ctx.translate(radius, radius);
-            radius = radius * 0.90
-            setInterval(drawClock, 1000);
-
             var lastDate = customers[customers.length-1][1];
             dp = $('#dp').datepicker().data('datepicker');
             dp.date = new Date(lastDate);
@@ -413,6 +406,13 @@ document.getElementById('import').onclick = function() {
                     renderSpecificDay(dateText);
                 }
             });
+
+            var canvas = document.getElementById("clock");
+            var ctx = canvas.getContext("2d");
+            var radius = canvas.height / 2;
+            ctx.translate(radius, radius);
+            radius = radius * 0.90
+            setInterval(drawClock, 1000);
 
             function drawClock() {
                 drawFace(ctx, radius);
