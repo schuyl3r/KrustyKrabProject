@@ -24,57 +24,46 @@
       $('#footer').load("footer/footer-user.html");
     });
 
-    var ml = { timelines: {} };
+    var ml = {
+      timelines: {}
+    };
   </script>
 
 </head>
 
 <body>
-    
-    <div id = "navguest"> </div>
-    
-    <div class="moving-letters">
-        
-        
-        <h1 class="ml7">
-            <span class="text-wrapper">
-                <span class="letters">The Krabby Patty</span>
-            </span>
-        </h1>
-        
-        <img src = "assets/img/burger.png" width = "40%" style = "padding: 0 30 30 30; ">
-        
-    
-        <script>
-            $('.ml7 .letters').each(function(){
-                $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
-            });
-            
-            ml.timelines["ml7"] = anime.timeline({loop: true})
-              .add({
-                targets: '.ml7 .letter',
-                translateY: ["1.1em", 0],
-                translateX: ["0.55em", 0],
-                translateZ: 0,
-                rotateZ: [180, 0],
-                duration: 750,
-                easing: "easeOutExpo",
-                delay: function(el, i) {
-                  return 50 * i;
-                }
-              }).add({
-                targets: '.ml7',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-              });
-        </script>
-    
+
+  <div id="navguest"> </div>
+
+
+
+  <div class="moving-letters">
+
+
+    <div class="animation">
+      <h1 class="ml1">
+        <span class="text-wrapper">
+          <span class="line line1"></span>
+          <span class="letters"> THE KRABBY PATTY</span>
+          <span class="line line2"></span>
+        </span>
+      </h1>
+
+      <img class="burgimg" src="assets/img/burger.png">
+
+      <script src="assets/js/animation.js"> </script>
     </div>
 
-    <div id = "footer"> </div>
-    
+
+
+
+
+
+
+  </div>
+
+  <div id="footer"> </div>
+
 </body>
 
 </html>

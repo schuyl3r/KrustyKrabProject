@@ -71,10 +71,10 @@ input[type="button"]:active {
 	font-size: 120%;
 }
 
-#salesTable td{
+#salesTable td {
 	background-color: white;
 	color: rgba(0, 1, 13);
-	font-family: 'Oleo Script';
+	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 115%;
 	border: 0.1px solid rgba(0, 1, 13);
 }
@@ -152,30 +152,31 @@ input[type="button"]:active {
 	display: none;
 }
 
-#clockdiv{
+#clockdiv {
 	float: left;
 	padding: 5%;
 }
 
-#dp{
+#dp {
 	float: right;
 	padding: 5%;
 }
 
-#duo{
+#duo {
 	justify-items: center;
 }
 
-#footer, #middle{
+#footer,
+#middle {
 	clear: both;
 }
 
-#upperRight{
+#upperRight {
 	float: right;
 	width: 50%;
 }
 
-#upperLeft{
+#upperLeft {
 	float: left;
 	width: 50%;
 }
