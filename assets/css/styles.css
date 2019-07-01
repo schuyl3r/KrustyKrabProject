@@ -55,3 +55,47 @@
 	top: 150px;
 	width: 400px;
 }
+
+
+.card-img-top {
+	width: 100px;
+	margin: auto;
+	position: relative;
+	top: 20px;
+	margin-bottom: 20px;
+}
+
+.portfolio-block {
+	color: #ffffff;
+	text-align: right;
+}
+
+.container {
+	padding-top: 50px;
+}
+
+.heading {
+	margin-bottom: 50px;
+	text-align: center;
+	font-family: 'Oleo Script';
+}
+
+.row {
+	padding-bottom: 50px;
+}
+
+.card-title {
+	font-family: 'Oleo Script';
+	text-align: center;
+}
+
+.card-header {
+	width: 100;
+	margin: auto;
+}
+
+.card-text {
+	margin: auto;
+	justify-content: center;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
