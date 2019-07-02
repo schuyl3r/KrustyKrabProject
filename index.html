@@ -10,6 +10,7 @@
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 
 
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -48,9 +49,14 @@
         </span>
       </h1>
 
-      <img class="burgimg animated flipInX" src="assets/img/burger.png">
+      <img class="burgimg wow fadeInUp" src="assets/img/burger.png">
 
       <script src="assets/js/animation.js"> </script>
+
+
+      <script>
+        new WOW().init();
+      </script>
     </div>
   </div>
 
@@ -59,7 +65,7 @@
       <h2>The Galley Grub</h2>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 wow jackInTheBox">
         <div class="card special-skill-item border-0">
           <div class="card-header bg-transparent border-0"><img src="assets/img/burger.png" width="100" />
           </div>
@@ -70,7 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 wow jackInTheBox">
         <div class="card special-skill-item border-0">
           <div class="card-header bg-transparent border-0"><img src="assets/img/deluxe.png" width="100" /></div>
           <div class="card-body">
@@ -80,7 +86,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 wow jackInTheBox">
         <div class="card special-skill-item border-0">
           <div class="card-header bg-transparent border-0"><img src="assets/img/combo.png" width="80" /></div>
           <div class="card-body">
@@ -93,7 +99,7 @@
     </div>
   </div>
 
-  <section class="shadow-lg portfolio-block" style="background-color: #000000;padding: 46px;">
+  <section class="shadow-lg portfolio-block wow fadeInLeftBig" style="background-color: #000000;padding: 46px;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-12 col-lg-5 offset-lg-1 text">

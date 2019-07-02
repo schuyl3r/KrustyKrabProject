@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    
+
     <title>Login to Krusty</title>
-    
-    
-    <script src="assets/js/jquery.min.js"></script> 
+
+
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -18,52 +19,53 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/loginstyle.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
     <script>
-         $(document).ready(function(){
+        $(document).ready(function () {
             $('#navguest').load("nav/nav-guest.html");
             $('#footer').load("footer/footer-guest.html");
-         });
+        });
     </script>
-   
-    
+
+
 
 </head>
 
 <body>
-    <div id = "navguest"> </div>
+    <div id="navguest"> </div>
     <center>
-    <form class="loginArea" id="login">
-        <h1>Login</h1>
-        <input type="text" id="usernameInput" placeholder="Username">
-        <input type="password" id="passwordInput" placeholder="Password">
-        <input type="submit" id="loginUser" value="Login">
-    </form>
+        <form class="loginArea" id="login">
+            <h1>Login</h1>
+            <input type="text" id="usernameInput" placeholder="Username">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <input type="submit" id="loginUser" value="Login">
+        </form>
     </center>
 
     <script>
-        $('.loginArea').submit(function(e){
+        $('.loginArea').submit(function (e) {
             e.preventDefault();
             logIn();
         })
-        document.getElementById('loginUser').onclick = function(){
+        document.getElementById('loginUser').onclick = function () {
             logIn();
         }
 
-        function logIn(){
+        function logIn() {
             var username = document.getElementById('usernameInput');
             var password = document.getElementById('passwordInput');
 
-            if(username.value == "admin" && password.value == "password"){
+            if (username.value == "admin" && password.value == "password") {
                 window.location.href = 'upload.html'
-            }else{
+            } else {
                 alert("Wrong input!");
             }
         }
     </script>
-    
-    
-    <div id = "footer"> </div>
+
+
+    <div id="footer"> </div>
 
 </body>
 

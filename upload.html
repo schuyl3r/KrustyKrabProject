@@ -4,99 +4,103 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    
-    
+
+
     <title>Dashboard</title>
-    
-    
-    <script src="assets/js/jquery.min.js"></script> 
+
+
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script defer src="assets/js/upload.js"></script>
     <script src="assets/package/dist/Chart.min.js"></script>
     <script src="assets/air-datepicker-master/dist/js/datepicker.min.js"></script>
     <script src="assets/air-datepicker-master/dist/js/i18n/datepicker.en.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    
-    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+    </script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+
+
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css//uploadstyle.css"> 
+    <link rel="stylesheet" href="assets/css//uploadstyle.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="assets/air-datepicker-master/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 
     <script>
-         $(document).ready(function(){
+        $(document).ready(function () {
             $('#navguest').load("nav/nav-user.html");
             $('#footer').load("footer/footer-user.html");
-         });
+        });
     </script>
 
-    
-   
+
+
 </head>
 
 <body>
 
-    <div id = "navguest"> </div>
+    <div id="navguest"> </div>
 
-        <div class = "container" >
+    <div class="container">
 
-            <center>
-                <form class="uploadArea">
-                    <h1>Select a File to Upload</h1>
-                    <input type="file" id="selectFiles" value = "Import" accept=".json"> <br>
-                    <input type="button" id="import" value="Upload">
-                    <input type="button" id="cancelUpload" value="Cancel">
-                </form>
-            </center>
+        <center>
+            <form class="uploadArea">
+                <h1>Select a File to Upload</h1>
+                <input type="file" id="selectFiles" value="Import" accept=".json"> <br>
+                <input type="button" id="import" value="Upload">
+                <input type="button" id="cancelUpload" value="Cancel">
+            </form>
+        </center>
 
-            <div id="upperRight">
-                <div class = "diagram" id = "burgerSalesDiv">
-                    <canvas id=  "burgerSalesBar"> </canvas>
-                </div>
-                    
-                <div class = "diagram" id = "speciesSalesDiv">
-                    <canvas id = "speciesSalesBar"> </canvas>
-                </div>
-            </div>
-            
-            <div id="upperLeft">
-                <div class = "diagram" id = "specificDaySalesDiv">
-                    <div id="duo">
-                        <div id= "clockdiv"> <canvas id="clock" width="192" height="192"></canvas> </div>
-                        <div id = "dp" data-language='en'> </div>
-                    </div>
-                    <canvas id = "specificDaySalesLine"> </canvas>
-                </div>
-            </div>
-            
-            <div id="middle">
-                <div class = "diagram" id = "burgerBySpecDiv"> 
-                    <canvas id = "burgerBySpecBar"> </canvas>
-                </div>
-
-                <div class = "diagram" id = "salesByHourDiv">
-                    <canvas id ="salesByHourLine"> </canvas>
-                </div>
-                
-                <div class = "diagram" id = "salesByDayDiv">
-                    <canvas id = "salesByDayLine"> </canvas>
-                </div>
+        <div id="upperRight">
+            <div class="diagram" id="burgerSalesDiv">
+                <canvas id="burgerSalesBar"> </canvas>
             </div>
 
-            <div id = "mainTable"> </div>
-
-            <script type = "text/javascript" src = "assets/js/dataprocess.js"> </script>
-            
+            <div class="diagram" id="speciesSalesDiv">
+                <canvas id="speciesSalesBar"> </canvas>
+            </div>
         </div>
-    
-    <div id = "footer"> </div>
+
+        <div id="upperLeft">
+            <div class="diagram" id="specificDaySalesDiv">
+                <div id="duo">
+                    <div id="clockdiv"> <canvas id="clock" width="192" height="192"></canvas> </div>
+                    <div id="dp" data-language='en'> </div>
+                </div>
+                <canvas id="specificDaySalesLine"> </canvas>
+            </div>
+        </div>
+
+        <div id="middle">
+            <div class="diagram" id="burgerBySpecDiv">
+                <canvas id="burgerBySpecBar"> </canvas>
+            </div>
+
+            <div class="diagram" id="salesByHourDiv">
+                <canvas id="salesByHourLine"> </canvas>
+            </div>
+
+            <div class="diagram" id="salesByDayDiv">
+                <canvas id="salesByDayLine"> </canvas>
+            </div>
+        </div>
+
+        <div id="mainTable"> </div>
+
+        <script type="text/javascript" src="assets/js/dataprocess.js"> </script>
+
+    </div>
+
+    <div id="footer"> </div>
 
 </body>
 
