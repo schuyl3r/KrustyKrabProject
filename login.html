@@ -30,14 +30,11 @@
     </script>
 
 
-
-
-
 </head>
 
 <body>
 
-    <script src="assets/js/animation.js"> </script>
+
 
     <div id="navguest"> </div>
     <center>
@@ -68,16 +65,19 @@
             var username = document.getElementById('usernameInput');
             var password = document.getElementById('passwordInput');
 
-            if (username.value == "admin" && password.value == "password") {
-                window.location.href = 'upload.html'
+            if (username.value == "admin" && password.value == "p@ssword") {
+                window.location.href = 'index.html'
             } else {
                 alert("Wrong input!");
             }
         }
     </script>
 
-
     <div id="footer"> </div>
+
+    <script>
+        document.getElementsByTagName("body")[0].style.cursor = "url('cursors/crabs.cur'), auto";
+    </script>
 
 </body>
 
