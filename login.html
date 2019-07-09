@@ -10,6 +10,7 @@
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -30,18 +31,29 @@
 
 
 
+
+
 </head>
 
 <body>
+
+    <script src="assets/js/animation.js"> </script>
+
     <div id="navguest"> </div>
     <center>
-        <form class="loginArea" id="login">
+        <form class="loginArea wow fadeIn" id="login">
             <h1>Login</h1>
             <input type="text" id="usernameInput" placeholder="Username">
             <input type="password" id="passwordInput" placeholder="Password">
             <input type="submit" id="loginUser" value="Login">
         </form>
     </center>
+
+    <script>
+        new WOW().init();
+    </script>
+
+
 
     <script>
         $('.loginArea').submit(function (e) {
