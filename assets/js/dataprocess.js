@@ -1,5 +1,4 @@
-
-document.getElementById('import').onclick = function() {
+document.getElementById('import').onclick = function () {
 
 
     var files = document.getElementById('selectFiles').files;
@@ -9,15 +8,15 @@ document.getElementById('import').onclick = function() {
     }
 
     var fr = new FileReader();
-    
-    fr.onload = function(e) {
+
+    fr.onload = function (e) {
 
         Chart.defaults.global.defaultFontFamily = 'Oleo Script';
         Chart.defaults.global.defaultFontColor = 'rgba(0, 1, 13)';
         displayDiagrams();
 
         var mainChart = null;
-        
+
         var result = JSON.parse(e.target.result);
         var formatted = JSON.stringify(result, null, 2);
 
@@ -25,7 +24,7 @@ document.getElementById('import').onclick = function() {
         var customerIDs = Object.keys(dataEntries);
 
         var customers = [];
-        
+
         getAllData();
         renderGenSales();
         renderBurgSales();
@@ -36,22 +35,24 @@ document.getElementById('import').onclick = function() {
         renderDatePicker();
 
         function getAllData() {
-            for(var i = 0; i < customerIDs.length; i++){
-            var custID = dataEntries[customerIDs[i]];
-            var customer = {customerNum: custID};
+            for (var i = 0; i < customerIDs.length; i++) {
+                var custID = dataEntries[customerIDs[i]];
+                var customer = {
+                    customerNum: custID
+                };
 
-            var customerInfo = [];
+                var customerInfo = [];
 
-            customerInfo.push(customerIDs[i]);
-            customerInfo.push(customer.customerNum["datetime"]);
-            customerInfo.push(customer.customerNum["burger"]);
-            customerInfo.push(customer.customerNum["species"]);
-            customers.push(customerInfo);
+                customerInfo.push(customerIDs[i]);
+                customerInfo.push(customer.customerNum["datetime"]);
+                customerInfo.push(customer.customerNum["burger"]);
+                customerInfo.push(customer.customerNum["species"]);
+                customers.push(customerInfo);
             }
         }
 
 
-        function renderGenSales () {
+        function renderGenSales() {
 
             var container = document.getElementById("mainTable");
 
@@ -60,7 +61,7 @@ document.getElementById('import').onclick = function() {
                 var div = document.createElement('div');
                 div.id = 'salesTableDiv';
                 div.style.padding = '10px 0px 10px 0px';
-                
+
                 var tbl = document.createElement('table');
                 tbl.id = 'salesTable';
                 tbl.style.width = '100%';
@@ -69,19 +70,26 @@ document.getElementById('import').onclick = function() {
                 div.append(tbl);
             }
 
-            
 
-            $(document).ready(function() {
-                $('#salesTable').DataTable( {
+
+            $(document).ready(function () {
+                $('#salesTable').DataTable({
                     data: customers,
-                    columns: [
-                        { title: "ID" },
-                        { title: "Date and Time" },
-                        { title: "Burger" },
-                        { title: "Species" }
+                    columns: [{
+                            title: "ID"
+                        },
+                        {
+                            title: "Date and Time"
+                        },
+                        {
+                            title: "Burger"
+                        },
+                        {
+                            title: "Species"
+                        }
                     ]
-                } );
-            } );
+                });
+            });
 
 
         }
@@ -89,17 +97,17 @@ document.getElementById('import').onclick = function() {
 
 
 
-        function renderBurgSales () {
+        function renderBurgSales() {
 
             var burgersales = result["burger_sales"];
             var burgersalesQty = [burgersales["Krusty Combo"], burgersales["Krusty Deluxe"], burgersales["Krabby Pattie"]];
             console.log(burgersalesQty);
 
 
-            let myChart = document.getElementById('burgerSalesBar').getContext('2d'); 
+            let myChart = document.getElementById('burgerSalesBar').getContext('2d');
 
             mainChart = new Chart(myChart, {
-                type:'bar',
+                type: 'bar',
                 data: {
                     labels: ['Krusty Combo', 'Krusty Deluxe', 'Krabby Pattie'],
                     datasets: [{
@@ -107,8 +115,8 @@ document.getElementById('import').onclick = function() {
                         data: burgersalesQty,
                         backgroundColor: [
                             'rgb(206, 23, 47)',
-                            'rgb(0, 1, 13)',
-                            'rgb(206, 23, 47)'
+                            'rgba(115, 24, 30)',
+                            'rgb(0, 1, 13)'
                         ]
                     }]
                 },
@@ -118,19 +126,20 @@ document.getElementById('import').onclick = function() {
         }
 
 
-        function renderSpecSales () {
+        function renderSpecSales() {
 
 
             var species_sales = result["species_sales"];
             var salesBySpecies = [species_sales["leatherback turtle"], species_sales["salmon"], species_sales["seahorse"], species_sales["coral"],
-                                species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]];
+                species_sales["giant clam"], species_sales["gray whale"], species_sales["sea lion"]
+            ];
             console.log(salesBySpecies);
 
 
             let myChart = document.getElementById('speciesSalesBar').getContext('2d');
 
             mainChart = new Chart(myChart, {
-                type:'bar',
+                type: 'bar',
                 data: {
                     labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
                     datasets: [{
@@ -147,13 +156,13 @@ document.getElementById('import').onclick = function() {
                         ]
                     }]
                 },
-                    options: {}
+                options: {}
 
             });
 
         }
 
-        function renderBurgBySpec () {
+        function renderBurgBySpec() {
 
 
             var burger_by_species = result["burger_by_species"];
@@ -163,11 +172,14 @@ document.getElementById('import').onclick = function() {
             var deluxe_Byspecies = burger_by_species["Krusty Deluxe"];
 
             var combo_sales_species = [combo_Byspecies["leatherback turtle"], combo_Byspecies["salmon"], combo_Byspecies["seahorse"], combo_Byspecies["coral"],
-                                        combo_Byspecies["giant clam"], combo_Byspecies["gray whale"], combo_Byspecies["sea lion"]];
+                combo_Byspecies["giant clam"], combo_Byspecies["gray whale"], combo_Byspecies["sea lion"]
+            ];
             var pattie_sales_species = [pattie_Byspecies["leatherback turtle"], pattie_Byspecies["salmon"], pattie_Byspecies["seahorse"], pattie_Byspecies["coral"],
-                                        pattie_Byspecies["giant clam"], pattie_Byspecies["gray whale"], pattie_Byspecies["sea lion"]];
+                pattie_Byspecies["giant clam"], pattie_Byspecies["gray whale"], pattie_Byspecies["sea lion"]
+            ];
             var deluxe_sales_species = [deluxe_Byspecies["leatherback turtle"], deluxe_Byspecies["salmon"], deluxe_Byspecies["seahorse"], deluxe_Byspecies["coral"],
-                                        deluxe_Byspecies["giant clam"], deluxe_Byspecies["gray whale"], deluxe_Byspecies["sea lion"]];
+                deluxe_Byspecies["giant clam"], deluxe_Byspecies["gray whale"], deluxe_Byspecies["sea lion"]
+            ];
 
             console.log(combo_sales_species);
             console.log(pattie_sales_species);
@@ -176,40 +188,40 @@ document.getElementById('import').onclick = function() {
 
 
             var comboDataset = {
-                        label: 'Krusty Combo Sales',
-                        data: combo_sales_species,
-                        backgroundColor: 'rgba(206, 23, 47)'
+                label: 'Krusty Combo Sales',
+                data: combo_sales_species,
+                backgroundColor: 'rgba(206, 23, 47)'
 
             };
 
             var deluxeDataset = {
-                        label: 'Krusty Deluxe Sales',
-                        data: deluxe_sales_species,
-                        backgroundColor: 'rgba(115, 24, 30)'
+                label: 'Krusty Deluxe Sales',
+                data: deluxe_sales_species,
+                backgroundColor: 'rgba(115, 24, 30)'
             };
 
             var pattieDataset = {
-                        label: 'Krabby Pattie Sales',
-                        data: pattie_sales_species,
-                        backgroundColor: 'rgba(0, 1, 13)'
+                label: 'Krabby Pattie Sales',
+                data: pattie_sales_species,
+                backgroundColor: 'rgba(0, 1, 13)'
             };
 
-            
+
 
             let myChart = document.getElementById('burgerBySpecBar').getContext('2d');
 
             mainChart = new Chart(myChart, {
-                type:'bar',
+                type: 'bar',
                 data: {
                     labels: ['Leatherback Turtle', 'Salmon', 'Seahorse', 'Coral', 'Giant Clam', 'Gray Whale', 'Sea Lion'],
                     datasets: [comboDataset, deluxeDataset, pattieDataset]
                 },
-                    options: {}
+                options: {}
 
             });
         }
 
-        function renderSalesByHour () {
+        function renderSalesByHour() {
 
             var nCusPerHour;
 
@@ -240,95 +252,74 @@ document.getElementById('import').onclick = function() {
             var am12 = 0;
 
 
-            for (var i = 0; i< customers.length; i++) {
+            for (var i = 0; i < customers.length; i++) {
                 var date = new Date(customers[i][1]);
 
                 if (date.getHours() == 0) {
                     am12++;
-                }
-                else if (date.getHours() == 1) {
+                } else if (date.getHours() == 1) {
                     am1++;
-                }
-                else if (date.getHours() == 2) {
+                } else if (date.getHours() == 2) {
                     am2++;
-                }
-                else if (date.getHours() == 3) {
+                } else if (date.getHours() == 3) {
                     am3++;
-                }
-                else if (date.getHours() == 4) {
+                } else if (date.getHours() == 4) {
                     am4++;
-                }
-                else if (date.getHours() == 5) {
+                } else if (date.getHours() == 5) {
                     am5++;
-                }
-                else if (date.getHours() == 6) {
+                } else if (date.getHours() == 6) {
                     am6++;
-                }
-                else if (date.getHours() == 7) {
+                } else if (date.getHours() == 7) {
                     am7++;
-                }
-                else if (date.getHours() == 8) {
+                } else if (date.getHours() == 8) {
                     am8++;
-                }
-                else if (date.getHours() == 9) {
+                } else if (date.getHours() == 9) {
                     am9++;
-                }
-                else if (date.getHours() == 10) {
+                } else if (date.getHours() == 10) {
                     am10++;
-                }
-                else if (date.getHours() == 11) {
+                } else if (date.getHours() == 11) {
                     am11++;
-                }
-                else if (date.getHours() == 12) {
+                } else if (date.getHours() == 12) {
                     pm12++;
-                }
-                else if (date.getHours() == 13) {
+                } else if (date.getHours() == 13) {
                     pm1++;
-                }
-                else if (date.getHours() == 14) {
+                } else if (date.getHours() == 14) {
                     pm2++;
-                }
-                else if (date.getHours() == 15) {
+                } else if (date.getHours() == 15) {
                     pm3++;
-                }
-                else if (date.getHours() == 16) {
+                } else if (date.getHours() == 16) {
                     pm4++;
-                }
-                else if (date.getHours() == 17) {
+                } else if (date.getHours() == 17) {
                     pm5++;
-                }
-                else if (date.getHours() == 18) {
+                } else if (date.getHours() == 18) {
                     pm6++;
-                }
-                else if (date.getHours() == 19) {
+                } else if (date.getHours() == 19) {
                     pm7++;
-                }
-                else if (date.getHours() == 20) {
+                } else if (date.getHours() == 20) {
                     pm8++;
-                }
-                else if (date.getHours() == 21) {
+                } else if (date.getHours() == 21) {
                     pm9++;
-                }
-                else if (date.getHours() == 22) {
+                } else if (date.getHours() == 22) {
                     pm10++;
-                }
-                else if (date.getHours() == 23) {
+                } else if (date.getHours() == 23) {
                     pm11++;
                 }
 
                 nCusPerHour = [am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12,
-                    pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12];
+                    pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12
+                ];
 
             }
 
 
-            let myChart = document.getElementById('salesByHourLine').getContext('2d'); 
+            let myChart = document.getElementById('salesByHourLine').getContext('2d');
 
             mainChart = new Chart(myChart, {
-                type:'line',
+                type: 'line',
                 data: {
                     labels: ['1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm',
-                        '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'],
+                        '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'
+                    ],
                     datasets: [{
                         label: 'Total Sales Per Hour of the Day',
                         data: nCusPerHour,
@@ -340,7 +331,7 @@ document.getElementById('import').onclick = function() {
             });
         }
 
-        function renderSalesByDay () {
+        function renderSalesByDay() {
 
             var nCusPerDay;
 
@@ -352,41 +343,35 @@ document.getElementById('import').onclick = function() {
             var satCtr = 0;
             var sunCtr = 0;
 
-            for (var i = 0; i< customers.length; i++) {
+            for (var i = 0; i < customers.length; i++) {
 
                 var date = new Date(customers[i][1]);
 
                 if (date.getDay() == 0) {
                     sunCtr++;
-                }
-                else if (date.getDay() == 1) {
+                } else if (date.getDay() == 1) {
                     monCtr++;
-                }
-                else if (date.getDay() == 2) {
+                } else if (date.getDay() == 2) {
                     tuesCtr++;
-                }
-                else if (date.getDay() == 3) {
+                } else if (date.getDay() == 3) {
                     wedCtr++;
-                }
-                else if (date.getDay() == 4) {
+                } else if (date.getDay() == 4) {
                     thursCtr++;
-                }
-                else if (date.getDay() == 5) {
+                } else if (date.getDay() == 5) {
                     friCtr++;
-                }
-                else if (date.getDay() == 6) {
+                } else if (date.getDay() == 6) {
                     satCtr++;
                 }
-            
+
                 nCusPerDay = [thursCtr, friCtr, satCtr, sunCtr, monCtr, tuesCtr, wedCtr];
             }
 
             console.log(nCusPerDay);
 
-            let myChart = document.getElementById('salesByDayLine').getContext('2d'); 
+            let myChart = document.getElementById('salesByDayLine').getContext('2d');
 
             mainChart = new Chart(myChart, {
-                type:'line',
+                type: 'line',
                 data: {
                     labels: ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'],
                     datasets: [{
@@ -398,15 +383,15 @@ document.getElementById('import').onclick = function() {
                 options: {}
 
             });
-            
+
         }
 
 
         var dp = null;
 
-        function renderDatePicker () {
+        function renderDatePicker() {
 
-            var lastDate = customers[customers.length-1][1];
+            var lastDate = customers[customers.length - 1][1];
             dp = $('#dp').datepicker().data('datepicker');
             dp.date = new Date(lastDate);
             dp.selectDate(lastDate);
@@ -414,9 +399,9 @@ document.getElementById('import').onclick = function() {
             renderSpecificDay(moment(lastDate).format("MM/DD/YYYY"));
 
             $("#dp").datepicker({
-                onSelect: function(dateText) {
+                onSelect: function (dateText) {
 
-                    if(mainChart!= null) {
+                    if (mainChart != null) {
                         mainChart.destroy();
                     }
 
@@ -435,78 +420,78 @@ document.getElementById('import').onclick = function() {
                 drawFace(ctx, radius);
                 drawNumbers(ctx, radius);
                 drawTime(ctx, radius);
-              }
-              
-              function drawFace(ctx, radius) {
+            }
+
+            function drawFace(ctx, radius) {
                 var grad;
                 ctx.beginPath();
-                ctx.arc(0, 0, radius, 0, 2*Math.PI);
+                ctx.arc(0, 0, radius, 0, 2 * Math.PI);
                 ctx.fillStyle = 'white';
                 ctx.fill();
-                grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+                grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
                 grad.addColorStop(0, '#333');
                 grad.addColorStop(0.5, 'white');
                 grad.addColorStop(1, '#333');
                 ctx.strokeStyle = grad;
-                ctx.lineWidth = radius*0.1;
+                ctx.lineWidth = radius * 0.1;
                 ctx.stroke();
                 ctx.beginPath();
-                ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+                ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
                 ctx.fillStyle = '#333';
                 ctx.fill();
-              }
-              
-              function drawNumbers(ctx, radius) {
+            }
+
+            function drawNumbers(ctx, radius) {
                 var ang;
                 var num;
-                ctx.font = radius*0.15 + "px arial";
-                ctx.textBaseline="middle";
-                ctx.textAlign="center";
-                for(num = 1; num < 13; num++){
-                  ang = num * Math.PI / 6;
-                  ctx.rotate(ang);
-                  ctx.translate(0, -radius*0.85);
-                  ctx.rotate(-ang);
-                  ctx.fillText(num.toString(), 0, 0);
-                  ctx.rotate(ang);
-                  ctx.translate(0, radius*0.85);
-                  ctx.rotate(-ang);
+                ctx.font = radius * 0.15 + "px arial";
+                ctx.textBaseline = "middle";
+                ctx.textAlign = "center";
+                for (num = 1; num < 13; num++) {
+                    ang = num * Math.PI / 6;
+                    ctx.rotate(ang);
+                    ctx.translate(0, -radius * 0.85);
+                    ctx.rotate(-ang);
+                    ctx.fillText(num.toString(), 0, 0);
+                    ctx.rotate(ang);
+                    ctx.translate(0, radius * 0.85);
+                    ctx.rotate(-ang);
                 }
-              }
-              
-              function drawTime(ctx, radius){
-                  var now = new Date();
-                  var hour = now.getHours();
-                  var minute = now.getMinutes();
-                  var second = now.getSeconds();
-                  //hour
-                  hour=hour%12;
-                  hour=(hour*Math.PI/6)+
-                  (minute*Math.PI/(6*60))+
-                  (second*Math.PI/(360*60));
-                  drawHand(ctx, hour, radius*0.5, radius*0.07);
-                  //minute
-                  minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-                  drawHand(ctx, minute, radius*0.8, radius*0.07);
-                  // second
-                  second=(second*Math.PI/30);
-                  drawHand(ctx, second, radius*0.9, radius*0.02);
-              }
-              
-              function drawHand(ctx, pos, length, width) {
-                  ctx.beginPath();
-                  ctx.lineWidth = width;
-                  ctx.lineCap = "round";
-                  ctx.moveTo(0,0);
-                  ctx.rotate(pos);
-                  ctx.lineTo(0, -length);
-                  ctx.stroke();
-                  ctx.rotate(-pos);
-              }
+            }
+
+            function drawTime(ctx, radius) {
+                var now = new Date();
+                var hour = now.getHours();
+                var minute = now.getMinutes();
+                var second = now.getSeconds();
+                //hour
+                hour = hour % 12;
+                hour = (hour * Math.PI / 6) +
+                    (minute * Math.PI / (6 * 60)) +
+                    (second * Math.PI / (360 * 60));
+                drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+                //minute
+                minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+                drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+                // second
+                second = (second * Math.PI / 30);
+                drawHand(ctx, second, radius * 0.9, radius * 0.02);
+            }
+
+            function drawHand(ctx, pos, length, width) {
+                ctx.beginPath();
+                ctx.lineWidth = width;
+                ctx.lineCap = "round";
+                ctx.moveTo(0, 0);
+                ctx.rotate(pos);
+                ctx.lineTo(0, -length);
+                ctx.stroke();
+                ctx.rotate(-pos);
+            }
 
         }
 
-        function renderSpecificDay (selectedDate) {
+        function renderSpecificDay(selectedDate) {
 
             if (selectedDate != '') {
                 console.log("Selected date: " + selectedDate);
@@ -541,7 +526,7 @@ document.getElementById('import').onclick = function() {
                 var am12 = 0;
 
 
-                for (var i = 0; i< customers.length; i++) {
+                for (var i = 0; i < customers.length; i++) {
 
                     var date = new Date(customers[i][1]);
 
@@ -549,92 +534,71 @@ document.getElementById('import').onclick = function() {
 
                         if (date.getHours() == 0) {
                             am12++;
-                        }
-                        else if (date.getHours() == 1) {
+                        } else if (date.getHours() == 1) {
                             am1++;
-                        }
-                        else if (date.getHours() == 2) {
+                        } else if (date.getHours() == 2) {
                             am2++;
-                        }
-                        else if (date.getHours() == 3) {
+                        } else if (date.getHours() == 3) {
                             am3++;
-                        }
-                        else if (date.getHours() == 4) {
+                        } else if (date.getHours() == 4) {
                             am4++;
-                        }
-                        else if (date.getHours() == 5) {
+                        } else if (date.getHours() == 5) {
                             am5++;
-                        }
-                        else if (date.getHours() == 6) {
+                        } else if (date.getHours() == 6) {
                             am6++;
-                        }
-                        else if (date.getHours() == 7) {
+                        } else if (date.getHours() == 7) {
                             am7++;
-                        }
-                        else if (date.getHours() == 8) {
+                        } else if (date.getHours() == 8) {
                             am8++;
-                        }
-                        else if (date.getHours() == 9) {
+                        } else if (date.getHours() == 9) {
                             am9++;
-                        }
-                        else if (date.getHours() == 10) {
+                        } else if (date.getHours() == 10) {
                             am10++;
-                        }
-                        else if (date.getHours() == 11) {
+                        } else if (date.getHours() == 11) {
                             am11++;
-                        }
-                        else if (date.getHours() == 12) {
+                        } else if (date.getHours() == 12) {
                             pm12++;
-                        }
-                        else if (date.getHours() == 13) {
+                        } else if (date.getHours() == 13) {
                             pm1++;
-                        }
-                        else if (date.getHours() == 14) {
+                        } else if (date.getHours() == 14) {
                             pm2++;
-                        }
-                        else if (date.getHours() == 15) {
+                        } else if (date.getHours() == 15) {
                             pm3++;
-                        }
-                        else if (date.getHours() == 16) {
+                        } else if (date.getHours() == 16) {
                             pm4++;
-                        }
-                        else if (date.getHours() == 17) {
+                        } else if (date.getHours() == 17) {
                             pm5++;
-                        }
-                        else if (date.getHours() == 18) {
+                        } else if (date.getHours() == 18) {
                             pm6++;
-                        }
-                        else if (date.getHours() == 19) {
+                        } else if (date.getHours() == 19) {
                             pm7++;
-                        }
-                        else if (date.getHours() == 20) {
+                        } else if (date.getHours() == 20) {
                             pm8++;
-                        }
-                        else if (date.getHours() == 21) {
+                        } else if (date.getHours() == 21) {
                             pm9++;
-                        }
-                        else if (date.getHours() == 22) {
+                        } else if (date.getHours() == 22) {
                             pm10++;
-                        }
-                        else if (date.getHours() == 23) {
+                        } else if (date.getHours() == 23) {
                             pm11++;
                         }
                     }
 
 
                     nCusPerHour = [am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12,
-                    pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12];
+                        pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12
+                    ];
 
                 }
 
 
-                let myChart = document.getElementById('specificDaySalesLine').getContext('2d'); 
+                let myChart = document.getElementById('specificDaySalesLine').getContext('2d');
 
                 mainChart = new Chart(myChart, {
-                    type:'line',
+                    type: 'line',
                     data: {
                         labels: ['1:00am', '2:00am', '3:00am', '4:00am', '5:00am', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm',
-                        '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'],
+                            '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', '8:00pm', '9:00pm', '10:00pm', '11:00pm', '12:00am'
+                        ],
                         datasets: [{
                             label: 'Total Sales Per Hour of the Day on ' + selectedDate,
                             data: nCusPerHour,
@@ -650,7 +614,7 @@ document.getElementById('import').onclick = function() {
 
         }
 
-        function displayDiagrams () {
+        function displayDiagrams() {
 
             var container = document.getElementById("mainTable");
             if (container.contains(document.getElementById('salesTableDiv'))) {
@@ -659,12 +623,12 @@ document.getElementById('import').onclick = function() {
             }
 
             var divs = document.getElementsByClassName("diagram");
-            for (var i = 0; i<divs.length; i++) {
+            for (var i = 0; i < divs.length; i++) {
                 divs[i].style.display = "block";
             }
         }
 
-        
+
 
     };
 
